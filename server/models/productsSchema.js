@@ -6,11 +6,21 @@ const productSchema = new mongoose.Schema({
   type: { type: String, required: true },
   vintage: { type: Number, required: true },
   provider: { type: String, required: true },
-  origin: { type: String, required: true },
+  country: { type: String, required: true },
+  country_id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "countries",
+  },
   region: { type: String, required: true },
-  price: { type: Number, requided: true },
+  region_id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "regions",
+  },
+  price: { type: Number, required: true },
   description: { type: String },
   img: { type: String, required: true, unique: true },
 });
 
-module.exports = mongoose.model("product", productSchema);
+module.exports = mongoose.model("products", productSchema);

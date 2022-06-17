@@ -7,4 +7,4 @@ const providerSchema = new mongoose.Schema({
   companyName: { type: String, required: true, unique: true },
 });
 
-module.exports = mongoose.model("categories", providerSchema);
+module.exports = mongoose.model("providers", providerSchema);

@@ -4,4 +4,4 @@ const countrySchema = new mongoose.Schema({
   country: { type: String, required: true },
 });
 
-module.exports = mongoose.model("categories", countrySchema);
+module.exports = mongoose.model("countries", countrySchema);

@@ -6,4 +6,4 @@ const adminSchema = new mongoose.Schema({
   eMail: { type: String, required: true, unique: true },
 });
 
-module.exports = mongoose.model("categories", adminSchema);
+module.exports = mongoose.model("users", adminSchema);

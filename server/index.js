@@ -43,7 +43,7 @@ const Regions = require("./models/regionsSchema"); // replace this for your mode
 
 // Pass configuration settings to AdminJS
 const adminJS = new AdminJS({
-  resources: [Categories, Products],
+  resources: [Providers, Products, Regions],
   rootPath: "/admin",
 });
 // Build and use a router which will handle all AdminJS routes
@@ -55,4 +55,4 @@ app.use(adminJS.options.rootPath, router);
 // app.use("/category", categoriesRoute);
 
 // Set the server to listen on port 3000
-app.listen(port, () => console.log(`listening on port 3000`));
+app.listen(port, () => console.log(`listening on port ${port}`));

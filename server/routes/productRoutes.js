@@ -4,4 +4,4 @@ const express = require("express"),
 
 router.get("product/", controller.allProd);
 
-router.p[ost];
+// router.p[ost];
