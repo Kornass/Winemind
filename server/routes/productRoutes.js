@@ -3,5 +3,3 @@ const express = require("express"),
   controller = require("../controllers/productController");
 
 router.get("product/", controller.allProd);
-
-// router.p[ost];

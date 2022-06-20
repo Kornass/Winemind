@@ -3,9 +3,14 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
   sku: { type: String, required: true, unique: true },
   name: { type: String, required: true, unique: true },
+  provider_id: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "providers",
+  },
   type: { type: String, required: true },
   vintage: { type: Number, required: true },
-  provider: { type: String, required: true },
+  company: { type: String, required: true },
   country: { type: String, required: true },
   country_id: {
     type: mongoose.Types.ObjectId,

@@ -51,8 +51,8 @@ const router = AdminJSExpress.buildRouter(adminJS);
 app.use(adminJS.options.rootPath, router);
 
 // routes
-// app.use("/product", productRoute);
-// app.use("/category", categoriesRoute);
+app.use("/product", productRoute);
+app.use("/user", categoriesRoute);
 
 // Set the server to listen on port 3000
 app.listen(port, () => console.log(`listening on port ${port}`));
