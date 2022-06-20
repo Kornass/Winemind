@@ -1,4 +1,4 @@
-const Product = require("../models/providersSchema");
+const Provider = require("../models/providersSchema");
 
 class ProviderController {
   // Register account

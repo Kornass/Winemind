@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import Cart from "./containers/Cart";
 import LogIn from "./containers/LogIn";
+import About from "./containers/About";
 import UserAccount from "./containers/UserAccount";
 import Register from "./containers/Register";
 import SingleProduct from "./containers/SingleProduct";

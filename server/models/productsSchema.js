@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
   },
   type: { type: String, required: true },
   vintage: { type: Number, required: true },
-  company: { type: String, required: true },
+  producer: { type: String, required: true },
   country: { type: String, required: true },
   country_id: {
     type: mongoose.Types.ObjectId,

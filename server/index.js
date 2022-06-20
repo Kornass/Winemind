@@ -2,7 +2,9 @@ const express = require("express"),
   app = express(),
   mongoose = require("mongoose");
 // Routes here:
-
+const productsRoutes = require("./routes/productRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const providersRoutes = require("./routes/providerRoutes");
 const cors = require("cors");
 
 // to print incoming requests from mongoose in the terminal
@@ -37,13 +39,14 @@ const AdminJSExpress = require("@adminjs/express");
 // We have to tell AdminJS that we will manage mongoose resources with it
 AdminJS.registerAdapter(require("@adminjs/mongoose"));
 // Import all the project's models
-const Providers = require("./models/providersSchema"); // replace this for your model
-const Products = require("./models/productsSchema"); // replace this for your model
-const Regions = require("./models/regionsSchema"); // replace this for your model
+const Providers = require("./models/providersSchema");
+const Products = require("./models/productsSchema");
+const Regions = require("./models/regionsSchema");
+const Countries = require("./models/countriesSchema");
 
 // Pass configuration settings to AdminJS
 const adminJS = new AdminJS({
-  resources: [Providers, Products, Regions],
+  resources: [Providers, Products, Regions, Countries],
   rootPath: "/admin",
 });
 // Build and use a router which will handle all AdminJS routes
@@ -51,8 +54,9 @@ const router = AdminJSExpress.buildRouter(adminJS);
 app.use(adminJS.options.rootPath, router);
 
 // routes
-app.use("/product", productRoute);
-app.use("/user", categoriesRoute);
+app.use("/product", productsRoutes);
+app.use("/user", providersRoutes);
+app.use("/admin", adminRoutes);
 
 // Set the server to listen on port 3000
 app.listen(port, () => console.log(`listening on port ${port}`));

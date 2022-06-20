@@ -5,7 +5,7 @@ const providerSchema = new mongoose.Schema({
   password: { type: String, required: true },
   eMail: { type: String, required: true, unique: true },
   companyName: { type: String, required: true, unique: true },
-  image: { type: string },
+  image: { type: String },
 });
 
 module.exports = mongoose.model("providers", providerSchema);
