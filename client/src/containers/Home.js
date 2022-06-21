@@ -1,6 +1,7 @@
 import Filtering from "../components/Filtering";
-function Home({ json }) {
-  json.map((e) => console.log(e.countryName));
+
+function Home({}) {
+  //removed json
   return <></>;
 }
 export default Home;
