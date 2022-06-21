@@ -1,4 +1,9 @@
+import AddProduct from "./AddProduct";
 function UserAccount() {
-  return <></>;
+  return (
+    <>
+      <AddProduct />
+    </>
+  );
 }
 export default UserAccount;

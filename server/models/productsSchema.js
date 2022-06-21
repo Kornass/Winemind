@@ -11,16 +11,8 @@ const productSchema = new mongoose.Schema({
   type: { type: String, required: true },
   vintage: { type: Number, required: true },
   producer: { type: String, required: true },
-  country_id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "countries",
-  },
-  region_id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "regions",
-  },
+  country: { type: String, required: true },
+  region: { type: String, required: true },
   price: { type: Number, required: true },
   description: { type: String },
   img: { type: String, required: true },

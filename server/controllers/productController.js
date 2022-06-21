@@ -8,6 +8,19 @@ class ProductController {
       req.body;
     sku = name + "-" + vintage + "-" + producer;
     try {
+      const addProd = await Product.create({
+        sku,
+        name,
+        type,
+        country,
+        region,
+        vintage,
+        producer,
+        price,
+        description,
+        img,
+      });
+      res.send({ addProd });
     } catch (e) {
       res.send({ e });
     }
