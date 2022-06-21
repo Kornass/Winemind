@@ -82,7 +82,7 @@ function AddProduct() {
 
   return (
     <div className="addform">
-      <form>
+      <form onSubmit={add}>
         <label>Wine name</label>
         <input onChange={nameHolder} />
         <label>Type</label>
