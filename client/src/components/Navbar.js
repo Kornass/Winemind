@@ -1,4 +1,4 @@
 function Navbar() {
-  return <></>;
+  return <header></header>;
 }
 export default Navbar;

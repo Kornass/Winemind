@@ -3,9 +3,21 @@ const Provider = require("../models/providersSchema");
 
 class ProductController {
   // Add new product
+
   async insert(req, res) {
-    let { sku, name, type, vintage, producer, price, description, img } =
-      req.body;
+    console.log(req.body);
+    let {
+      sku,
+      wineName: name,
+      type,
+      vintage,
+      country,
+      region,
+      producer,
+      price,
+      description,
+      img,
+    } = req.body;
     sku = name + "-" + vintage + "-" + producer;
     try {
       const addProd = await Product.create({
@@ -20,8 +32,10 @@ class ProductController {
         description,
         img,
       });
+      console.log(addProd);
       res.send({ addProd });
     } catch (e) {
+      console.log(e);
       res.send({ e });
     }
   }

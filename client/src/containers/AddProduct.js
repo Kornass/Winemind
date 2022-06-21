@@ -1,79 +1,60 @@
 import json from "country-region-data/data.json";
 import { useState } from "react";
 import axios from "axios";
+import { URL } from "../config";
 
 function AddProduct() {
-  const [country, setCountry] = useState("");
-  const [type, setType] = useState("");
-  const [year, setYear] = useState("");
-  const [producer, setProducer] = useState("");
-  const [region, setRegion] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-
-  const countryHolder = (e) => {
-    setCountry(e.target.value);
-  };
-  const nameHolder = (e) => {
-    setName(e.target.value);
-  };
-  const typeHolder = (e) => {
-    setType(e.target.value);
-  };
-  const yearHolder = (e) => {
-    setYear(e.target.value);
-  };
-  const producerHolder = (e) => {
-    setProducer(e.target.value);
-  };
-  const regionHolder = (e) => {
-    setRegion(e.target.value);
-  };
-  const priceHolder = (e) => {
-    setPrice(e.target.value);
-  };
-  const descriptionHolder = (e) => {
-    setDescription(e.target.value);
-  };
-  const imageHolder = (e) => {
-    setImage(e.target.value);
-  };
+  const [product, setProduct] = useState({
+    wineName: "",
+    type: "",
+    vintage: "",
+    country: "",
+    region: "",
+    producer: "",
+    price: "",
+    description: "",
+    img: "",
+  });
 
   const regFinder = () => {
-    if (country) {
-      debugger;
-      let idx = json.findIndex((e) => e.countryName == country);
+    if (product.country) {
+      let idx = json.findIndex((e) => e.countryName == product.country);
       return json[idx].regions.map((e, i) => <option key={i}>{e.name}</option>);
     }
   };
 
-  const add = () => {
-    let url = "http://localhost:4000/product/add";
+  const add = (e) => {
+    e.preventDefault();
+
+    let url = `${URL}/product/add`;
     axios
       .post(url, {
-        name: name,
-        type: type,
-        year: year,
-        producer: producer,
-        country: country,
-        region: region,
-        price: price,
-        description: description,
-        image: image,
+        wineName: product.wineName,
+        type: product.type,
+        vintage: product.vintage,
+        producer: product.producer,
+        country: product.country,
+        region: product.region,
+        price: product.price,
+        description: product.description,
+        img: product.img,
       })
       .then((res) => {
+        e.target.reset();
         console.log(res.status);
-        setName("");
-        setType("");
-        setYear("");
-        setProducer("");
-        setCountry("");
-        setRegion("");
-        setPrice("");
-        setDescription("");
-        setImage("");
+        setProduct({
+          wineName: "",
+          type: "",
+          vintage: "",
+          country: "",
+          region: "",
+          producer: "",
+          price: "",
+          description: "",
+          img: "",
+        });
+
+        alert("Product was added successfully");
       })
       .catch((e) => {
         alert(e);
@@ -84,15 +65,31 @@ function AddProduct() {
     <div className="addform">
       <form onSubmit={add}>
         <label>Wine name</label>
-        <input onChange={nameHolder} />
+        <input
+          required
+          name="wineName"
+          onChange={(e) => setProduct({ ...product, wineName: e.target.value })}
+        />
         <label>Type</label>
-        <input onChange={typeHolder} />
+        <input
+          required
+          onChange={(e) => setProduct({ ...product, type: e.target.value })}
+        />
         <label>Year</label>
-        <input onChange={yearHolder} />
+        <input
+          required
+          onChange={(e) => setProduct({ ...product, vintage: e.target.value })}
+        />
         <label>Producer</label>
-        <input onChange={producerHolder} />
+        <input
+          required
+          onChange={(e) => setProduct({ ...product, producer: e.target.value })}
+        />
         <label>Country</label>
-        <select onChange={countryHolder}>
+        <select
+          required
+          onChange={(e) => setProduct({ ...product, country: e.target.value })}
+        >
           {json.map((e, i) => (
             <option key={i} value={e.countryName}>
               {e.countryName}
@@ -100,13 +97,28 @@ function AddProduct() {
           ))}
         </select>
         <label>Region</label>
-        <select onChange={regionHolder}>{regFinder()}</select>
+        <select
+          required
+          onChange={(e) => setProduct({ ...product, region: e.target.value })}
+        >
+          {regFinder()}
+        </select>
         <label>Price</label>
-        <input onChange={priceHolder} />
+        <input
+          required
+          onChange={(e) => setProduct({ ...product, price: e.target.value })}
+        />
         <label>Description</label>
-        <input onChange={descriptionHolder} />
+        <input
+          onChange={(e) =>
+            setProduct({ ...product, description: e.target.value })
+          }
+        />
         <label>Image</label>
-        <input onChange={imageHolder} />
+        <input
+          required
+          onChange={(e) => setProduct({ ...product, img: e.target.value })}
+        />
         <input type="submit" value="submit" />
       </form>
     </div>
