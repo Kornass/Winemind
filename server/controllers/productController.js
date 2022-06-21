@@ -1,8 +1,12 @@
 const Product = require("../models/productsSchema");
+const Provider = require("../models/providersSchema");
 
 class ProductController {
   // Add new product
   async insert(req, res) {
+    let { sku, name, type, vintage, producer, price, description, img } =
+      req.body;
+    sku = name + "-" + vintage + "-" + producer;
     try {
     } catch (e) {
       res.send({ e });
