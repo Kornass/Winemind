@@ -25,7 +25,6 @@ function AddProduct() {
 
   const add = (e) => {
     e.preventDefault();
-
     let url = `${URL}/product/add`;
     axios
       .post(url, {

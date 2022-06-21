@@ -3,7 +3,16 @@ const Provider = require("../models/providersSchema");
 class ProviderController {
   // Register account
   async userRegister(req, res) {
+    let { name, password, eMail, companyName, image } = req.body;
     try {
+      const addUser = Provider.create({
+        name,
+        password,
+        eMail,
+        companyName,
+        image,
+      });
+      res.send({ addUser });
     } catch (e) {
       res.send({ e });
     }
