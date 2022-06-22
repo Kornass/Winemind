@@ -1,4 +1,4 @@
-const providersSchema = require("../models/providersSchema");
+const Admin = require("../models/adminSchema");
 const Provider = require("../models/providersSchema");
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
@@ -40,23 +40,39 @@ class ProviderController {
     let { login, password } = req.body;
 
     try {
-      const user = await Provider.findOne({ name: login });
-      const email = await Provider.findOne({ eMail: login });
-      if (email || user)
+      const user = await Admin.findOne({
+        $or: [{ eMail: login }, { name: login }],
+      });
+      if (!user)
+        user = await Provider.findOne({
+          $or: [{ eMail: login }, { name: login }],
+        });
+      if (user)
         return res.send({
           ok: true,
-          message: "You are logged in!",
+          message: "Username/email correct",
         });
       const match = await argon2.verify(user.password, password);
-      const match1 = await argon2.varify(email.password, password);
-      if (match || match1) {
-        // logged in
-      }
+      if (match) {
+        const token = jwt.sign({ login: user.name }, jwt_secret, {
+          expiresIn: "2h",
+        });
+        res.send({ ok: true, message: "Welcome back", login, token });
+      } else return res.send({ ok: false, message: "invalid data provided" });
     } catch (e) {
-      res.send({ e });
+      res.send({ ok: false, e });
     }
   }
-
+  // Token verification
+  verify_token(req, res) {
+    console.log(req.headers.authorization);
+    const token = req.headers.authorization;
+    jwt.verify(token, jwt_secret, (err, succ) => {
+      err
+        ? res.send({ ok: false, message: "something went wrong" })
+        : res.send({ ok: true, succ });
+    });
+  }
   //Delete user
   async delete(req, res) {
     try {
