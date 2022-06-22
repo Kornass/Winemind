@@ -5,8 +5,8 @@ import { URL } from "../config";
 
 Modal.setAppElement("#root");
 
-function LogIn() {
-  const [isOpen, setIsOpen] = useState(false);
+function LogIn({ open }) {
+  const [isOpen, setIsOpen] = useState(open);
 
   function toggleModal() {
     setIsOpen(!isOpen);

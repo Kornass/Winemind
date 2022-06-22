@@ -1,7 +1,11 @@
 import cart from "../images/cart.png";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
+import { useState, useEffect } from "react";
+
 function Navbar() {
+  const [openLogin, setOpenLogin] = useState(false);
+  console.log(openLogin);
   return (
     <div className="nav">
       <span>Logo here</span>
@@ -9,8 +13,8 @@ function Navbar() {
       <button className="logged">My Account</button>
       <div className="not-logged">
         <p>I'm a nice provider!</p>
-        <SignUp />
-        <LogIn />
+        <SignUp setOpenLogin={setOpenLogin} />
+        <LogIn open={openLogin} />
       </div>
       <a>
         <img src={cart} alt="cart" />

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
-function SignUp() {
+function SignUp({ setOpenLogin }) {
   const [error, setError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [provider, setProvider] = useState({
@@ -20,7 +20,7 @@ function SignUp() {
   const [password2, setPassword2] = useState("");
   const [msg, setMsg] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // Toggle sign up modal window
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -59,8 +59,13 @@ function SignUp() {
         });
         if (res.data.ok) {
           setTimeout(() => {
-            navigate("/login");
-          }, 2000);
+            toggleModal();
+          }, 1000);
+        }
+        if (res.data.ok) {
+          setTimeout(() => {
+            setOpenLogin(true);
+          }, 1000);
         }
       })
       .catch((error) => {
