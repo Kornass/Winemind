@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
+import { useNavigate } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -18,27 +19,8 @@ function SignUp() {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [msg, setMsg] = useState("");
-  const [users, setUsers] = useState([]);
-  // Get all user names to check if user already exist
-  const getAllUsers = () => {
-    let url = `${URL}/user/all`;
-    axios
-      .get(url)
-      .then((res) => {
-        let temp = [];
-        res.data.allProviders.map((e) => {
-          temp.push(e.name);
-        });
-        setUsers(temp);
-      })
-      .catch((error) => {
-        setError(error);
-        alert(error);
-      });
-  };
-  useEffect(() => {
-    getAllUsers();
-  }, []);
+
+  const navigate = useNavigate();
   // Toggle sign up modal window
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -47,7 +29,7 @@ function SignUp() {
   // OnSubmit adding provider function
   const add = (e) => {
     e.preventDefault();
-    if (users.includes(provider.name)) return setMsg("User already exist");
+
     if (password1 !== password2) {
       return setMsg("Password is not confirmed");
     } else if (password1.length < 8) {
@@ -63,9 +45,11 @@ function SignUp() {
         image: provider.image,
       })
       .then((res) => {
+        // debugger;
         e.target.reset();
-        console.log(res.status);
-
+        console.log(provider);
+        console.log(res.data);
+        // setMsg(res.data.message)
         setProvider({
           name: "",
           password: "",
@@ -73,15 +57,17 @@ function SignUp() {
           companyName: "",
           image: "",
         });
-        setMsg("");
-        alert("User added successfully");
+        if (res.data.ok) {
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
+        }
       })
       .catch((error) => {
         setError(error);
         alert(error);
       });
   };
-
   return (
     <>
       <button className="add" onClick={toggleModal}>

@@ -15,7 +15,6 @@ select {
   justify-content: space-around;
   align-items: center;
   list-style: none;
-  border-bottom: 1px solid;
 }
 .logged {
   display: none;

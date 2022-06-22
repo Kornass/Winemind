@@ -8,19 +8,28 @@ class ProviderController {
   // Register account
   async userRegister(req, res) {
     let { name, password, eMail, companyName, image } = req.body;
+
     try {
+      const user = await Provider.findOne({ name });
+      if (user) return res.send({ ok: false, message: "User already exist!" });
+      const email = await Provider.findOne({ eMail });
+      if (email)
+        return res.send({
+          ok: false,
+          message: "There is already a user register with this e-mail adress!",
+        });
       const hash = await argon2.hash(password);
       console.log("hash ==>", hash);
-      const addUser = Provider.create({
+      await Provider.create({
         name,
         password: hash,
         eMail,
         companyName,
         image,
       });
-      res.send({ addUser });
+      res.send({ ok: true, message: "User successfully registered!" });
     } catch (e) {
-      res.send({ e });
+      res.send({ ok: false, e });
     }
   }
 
