@@ -13,7 +13,6 @@ function Navbar() {
         <LogIn />
       </div>
       <a>
-        {" "}
         <img src={cart} alt="cart" />
       </a>
     </div>

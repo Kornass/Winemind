@@ -39,13 +39,15 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  /* padding-bottom: 10px; */
   align-items: center;
 }
 .modal form label {
   margin-top: 15px;
 }
-
+.msg-register {
+  color: red;
+}
 .submit {
   margin-top: 20px;
 }
