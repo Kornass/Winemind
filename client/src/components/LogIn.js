@@ -6,11 +6,14 @@ import { URL } from "../config";
 Modal.setAppElement("#root");
 
 function LogIn({ open }) {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
 
   function toggleModal() {
     setIsOpen(!isOpen);
   }
+  useEffect(() => {
+    open && setIsOpen(true);
+  }, [open]);
   return (
     <>
       <button onClick={toggleModal}>LogIn</button>

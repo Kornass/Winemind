@@ -46,10 +46,7 @@ function SignUp({ setOpenLogin }) {
       })
       .then((res) => {
         // debugger;
-        e.target.reset();
-        console.log(provider);
         console.log(res.data);
-        // setMsg(res.data.message)
         setProvider({
           name: "",
           password: "",
@@ -57,6 +54,7 @@ function SignUp({ setOpenLogin }) {
           companyName: "",
           image: "",
         });
+        setMsg(res.data.message);
         if (res.data.ok) {
           setTimeout(() => {
             toggleModal();

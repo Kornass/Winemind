@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function Navbar() {
   const [openLogin, setOpenLogin] = useState(false);
-  console.log(openLogin);
+
   return (
     <div className="nav">
       <span>Logo here</span>
