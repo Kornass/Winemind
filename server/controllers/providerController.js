@@ -16,7 +16,8 @@ class ProviderController {
       if (email)
         return res.send({
           ok: false,
-          message: "There is already a user register with this e-mail adress!",
+          message:
+            "There is already a user registered with this e-mail adress!",
         });
       const hash = await argon2.hash(password);
       console.log("hash ==>", hash);
@@ -26,6 +27,7 @@ class ProviderController {
         eMail,
         companyName,
         image,
+        active: false,
       });
       res.send({ ok: true, message: "User successfully registered!" });
     } catch (e) {
@@ -36,7 +38,20 @@ class ProviderController {
   // User logs in
   async userLogIn(req, res) {
     let { login, password } = req.body;
+
     try {
+      const user = await Provider.findOne({ name: login });
+      const email = await Provider.findOne({ eMail: login });
+      if (email || user)
+        return res.send({
+          ok: true,
+          message: "You are logged in!",
+        });
+      const match = await argon2.verify(user.password, password);
+      const match1 = await argon2.varify(email.password, password);
+      if (match || match1) {
+        // logged in
+      }
     } catch (e) {
       res.send({ e });
     }
