@@ -27,7 +27,7 @@ function SignUp({ setOpenLogin }) {
     setMsg("");
   }
   // OnSubmit adding provider function
-  const add = (e) => {
+  const add = async (e) => {
     e.preventDefault();
 
     if (password1 !== password2) {

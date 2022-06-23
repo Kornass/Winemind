@@ -7,6 +7,7 @@ const providerSchema = new mongoose.Schema({
   companyName: { type: String, required: true, unique: true },
   image: { type: String },
   active: { type: Boolean, required: true },
+  // admin:  { type: Boolean, required: true },
 });
 
 module.exports = mongoose.model("providers", providerSchema);

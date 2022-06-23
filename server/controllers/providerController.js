@@ -40,7 +40,7 @@ class ProviderController {
     let { login, password } = req.body;
 
     try {
-      const user = await Admin.findOne({
+      let user = await Admin.findOne({
         $or: [{ eMail: login }, { name: login }],
       });
       if (!user)
@@ -58,6 +58,7 @@ class ProviderController {
           expiresIn: "2h",
         });
         res.send({ ok: true, message: "Welcome back", login, token });
+        console.log(token);
       } else return res.send({ ok: false, message: "invalid data provided" });
     } catch (e) {
       res.send({ ok: false, e });
