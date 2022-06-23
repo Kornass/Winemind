@@ -5,7 +5,6 @@ class ProductController {
   // Add new product
 
   async insert(req, res) {
-    console.log(req.body);
     let {
       sku,
       wineName: name,

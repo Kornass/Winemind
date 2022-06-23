@@ -1,9 +1,11 @@
-// import AddProduct from "./AddProduct";
-// function UserDashBoard() {
-//   return (
-//     <>
-//       <AddProduct />
-//     </>
-//   );
-// }
-// export default UserDashBoard;
+import AddProduct from "./AddProduct";
+import { useState, useEffect } from "react";
+function UserDashBoard() {
+  const [products, setProducts] = useState();
+  return (
+    <>
+      <AddProduct />
+    </>
+  );
+}
+export default UserDashBoard;

@@ -16,9 +16,6 @@ select {
   align-items: center;
   list-style: none;
 }
-.logged {
-  display: none;
-}
 
 li {
   padding: 10px;

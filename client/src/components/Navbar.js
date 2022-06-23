@@ -4,20 +4,23 @@ import LogIn from "./LogIn";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ login, isLoggedIn }) {
+function Navbar({ login, isLoggedIn, logout }) {
   const [openLogin, setOpenLogin] = useState(false);
-
+  console.log(login, isLoggedIn);
   return (
     <div className="nav">
       <span>Logo here</span>
       <input placeholder="search" />
 
       {isLoggedIn ? (
-        <Link to="/myAccount">
-          <button className="logged">My Account</button>
-        </Link>
+        <>
+          <Link to="/myAccount">
+            <button>My Account</button>
+          </Link>
+          <button onClick={logout}>LogOut</button>
+        </>
       ) : (
-        <div className="not-logged">
+        <div>
           <p>I'm a nice provider!</p>
           <SignUp setOpenLogin={setOpenLogin} />
           <LogIn open={openLogin} login={login} />

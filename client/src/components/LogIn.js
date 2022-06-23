@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
 import { useNavigate } from "react-router-dom";
-import * as jose from "jose";
 
 Modal.setAppElement("#root");
 
@@ -36,16 +35,12 @@ function LogIn({ open, login }) {
       setMessage(response.data.message);
       console.log(response.data);
       if (response.data.ok) {
-        let decodedToken = jose.decodeJwt(response.data.token);
-        console.log(
-          "Email extracted from the JWT token after login: ",
-          decodedToken.login
-        );
+        // let decodedToken = jose.decodeJwt(response.data.token);
         setTimeout(() => {
           toggleModal();
           login(response.data.token);
           navigate("/");
-        }, 2000);
+        }, 500);
       }
     } catch (error) {
       console.log(error);

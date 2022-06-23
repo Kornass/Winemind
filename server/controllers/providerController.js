@@ -2,6 +2,7 @@ const Admin = require("../models/adminSchema");
 const Provider = require("../models/providersSchema");
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
+require("dotenv").config({ path: "./.env" });
 const jwt_secret = process.env.JWT_SECRET;
 
 class ProviderController {
@@ -47,20 +48,23 @@ class ProviderController {
         user = await Provider.findOne({
           $or: [{ eMail: login }, { name: login }],
         });
-      if (user)
+      if (!user)
         return res.send({
-          ok: true,
-          message: "Username/email correct",
+          ok: false,
+          message: "Username/email incorrect",
         });
       const match = await argon2.verify(user.password, password);
       if (match) {
-        const token = jwt.sign({ login: user.name }, jwt_secret, {
+        const token = jwt.sign({ user }, jwt_secret, {
           expiresIn: "2h",
         });
-        res.send({ ok: true, message: "Welcome back", login, token });
+        user.password = null;
+        console.log(user);
+        res.send({ ok: true, message: "Welcome back", user, token });
         console.log(token);
       } else return res.send({ ok: false, message: "invalid data provided" });
     } catch (e) {
+      console.log(e);
       res.send({ ok: false, e });
     }
   }

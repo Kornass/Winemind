@@ -1,5 +1,5 @@
 import json from "country-region-data/data.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
 
@@ -8,13 +8,19 @@ function AddProduct() {
     wineName: "",
     type: "",
     vintage: "",
-    country: "",
+    country: json[0].countryName,
     region: "",
     producer: "",
     price: "",
     description: "",
     img: "",
   });
+
+  useEffect(() => {
+    console.log(product);
+    let idx = json.findIndex((e) => e.countryName == product.country);
+    setProduct({ ...product, region: json[idx].regions[0].name });
+  }, [product.country]);
 
   const regFinder = () => {
     if (product.country) {
@@ -45,7 +51,7 @@ function AddProduct() {
           wineName: "",
           type: "",
           vintage: "",
-          country: "",
+          country: json[0].countryName,
           region: "",
           producer: "",
           price: "",
@@ -86,6 +92,7 @@ function AddProduct() {
         />
         <label>Country</label>
         <select
+          defaultValue={json[0].countryName}
           required
           onChange={(e) => setProduct({ ...product, country: e.target.value })}
         >
@@ -97,6 +104,7 @@ function AddProduct() {
         </select>
         <label>Region</label>
         <select
+          defaultValue={product.region}
           required
           onChange={(e) => setProduct({ ...product, region: e.target.value })}
         >
@@ -118,7 +126,7 @@ function AddProduct() {
           required
           onChange={(e) => setProduct({ ...product, img: e.target.value })}
         />
-        <input type="submit" value="submit" />
+        <input type="submit" value="Add" />
       </form>
     </div>
   );
