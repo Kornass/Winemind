@@ -69,31 +69,52 @@ function AddProduct({ user }) {
       });
   };
 
+  const types = [
+    "Red",
+    "White",
+    "Rosé",
+    "Sparkling red",
+    "Sparkling white",
+    "Sparkling rosé",
+    "Dessert",
+    "Non-alcoholic",
+    "Others",
+  ];
+
   return (
     <div className="addform">
       <form onSubmit={add}>
-        <label>Wine name</label>
+        <label>Wine name *</label>
         <input
           required
           name="wineName"
           onChange={(e) => setProduct({ ...product, wineName: e.target.value })}
         />
-        <label>Type</label>
-        <input
+        <label>Type *</label>
+        <select
+          defaultValue={"red"}
           required
           onChange={(e) => setProduct({ ...product, type: e.target.value })}
-        />
-        <label>Year</label>
+        >
+          {types.map((e, i) => (
+            <option key={i} value={e}>
+              {e}
+            </option>
+          ))}
+        </select>
+        <label>Year *</label>
         <input
+          minLength="4"
+          maxlength="4"
           required
           onChange={(e) => setProduct({ ...product, vintage: e.target.value })}
         />
-        <label>Producer</label>
+        <label>Producer *</label>
         <input
           required
           onChange={(e) => setProduct({ ...product, producer: e.target.value })}
         />
-        <label>Country</label>
+        <label>Country *</label>
         <select
           defaultValue={json[0].countryName}
           required
@@ -105,7 +126,7 @@ function AddProduct({ user }) {
             </option>
           ))}
         </select>
-        <label>Region</label>
+        <label>Region *</label>
         <select
           defaultValue={product.region}
           required
@@ -113,8 +134,9 @@ function AddProduct({ user }) {
         >
           {regFinder()}
         </select>
-        <label>Price</label>
+        <label>Price (in euros) *</label>
         <input
+          type="Number"
           required
           onChange={(e) => setProduct({ ...product, price: e.target.value })}
         />
@@ -124,8 +146,9 @@ function AddProduct({ user }) {
             setProduct({ ...product, description: e.target.value })
           }
         />
-        <label>Image</label>
+        <label>Image URL *</label>
         <input
+          // type="file"
           required
           onChange={(e) => setProduct({ ...product, img: e.target.value })}
         />
