@@ -110,14 +110,7 @@ button {
   width: 200px;
 }
 /* Provider info styling */
-.user-info {
-  font-size: 20px;
-  display: block;
-  justify-content: space-around;
-}
-.user-info span {
-  margin-right: 10px;
-}
+
 .edit {
   display: inline;
   cursor: pointer;

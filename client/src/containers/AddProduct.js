@@ -82,79 +82,90 @@ function AddProduct({ user }) {
   ];
 
   return (
-    <div className="addform">
-      <form onSubmit={add}>
-        <label>Wine name *</label>
-        <input
-          required
-          name="wineName"
-          onChange={(e) => setProduct({ ...product, wineName: e.target.value })}
-        />
-        <label>Type *</label>
-        <select
-          defaultValue={"red"}
-          required
-          onChange={(e) => setProduct({ ...product, type: e.target.value })}
-        >
-          {types.map((e, i) => (
-            <option key={i} value={e}>
-              {e}
-            </option>
-          ))}
-        </select>
-        <label>Year *</label>
-        <input
-          minLength="4"
-          maxlength="4"
-          required
-          onChange={(e) => setProduct({ ...product, vintage: e.target.value })}
-        />
-        <label>Producer *</label>
-        <input
-          required
-          onChange={(e) => setProduct({ ...product, producer: e.target.value })}
-        />
-        <label>Country *</label>
-        <select
-          defaultValue={json[0].countryName}
-          required
-          onChange={(e) => setProduct({ ...product, country: e.target.value })}
-        >
-          {json.map((e, i) => (
-            <option key={i} value={e.countryName}>
-              {e.countryName}
-            </option>
-          ))}
-        </select>
-        <label>Region *</label>
-        <select
-          defaultValue={product.region}
-          required
-          onChange={(e) => setProduct({ ...product, region: e.target.value })}
-        >
-          {regFinder()}
-        </select>
-        <label>Price (in euros) *</label>
-        <input
-          type="Number"
-          required
-          onChange={(e) => setProduct({ ...product, price: e.target.value })}
-        />
-        <label>Description</label>
-        <input
-          onChange={(e) =>
-            setProduct({ ...product, description: e.target.value })
-          }
-        />
-        <label>Image URL *</label>
-        <input
-          // type="file"
-          required
-          onChange={(e) => setProduct({ ...product, img: e.target.value })}
-        />
-        <input type="submit" value="Add" />
-      </form>
-    </div>
+    <>
+      <h2>Add product</h2>
+      <div className="addform">
+        <form onSubmit={add}>
+          <label>Wine name *</label>
+          <input
+            required
+            name="wineName"
+            onChange={(e) =>
+              setProduct({ ...product, wineName: e.target.value })
+            }
+          />
+          <label>Type *</label>
+          <select
+            defaultValue={"red"}
+            required
+            onChange={(e) => setProduct({ ...product, type: e.target.value })}
+          >
+            {types.map((e, i) => (
+              <option key={i} value={e}>
+                {e}
+              </option>
+            ))}
+          </select>
+          <label>Year *</label>
+          <input
+            minLength="4"
+            maxLength="4"
+            required
+            onChange={(e) =>
+              setProduct({ ...product, vintage: e.target.value })
+            }
+          />
+          <label>Producer *</label>
+          <input
+            required
+            onChange={(e) =>
+              setProduct({ ...product, producer: e.target.value })
+            }
+          />
+          <label>Country *</label>
+          <select
+            defaultValue={json[0].countryName}
+            required
+            onChange={(e) =>
+              setProduct({ ...product, country: e.target.value })
+            }
+          >
+            {json.map((e, i) => (
+              <option key={i} value={e.countryName}>
+                {e.countryName}
+              </option>
+            ))}
+          </select>
+          <label>Region *</label>
+          <select
+            defaultValue={product.region}
+            required
+            onChange={(e) => setProduct({ ...product, region: e.target.value })}
+          >
+            {regFinder()}
+          </select>
+          <label>Price (in euros) *</label>
+          <input
+            type="Number"
+            required
+            onChange={(e) => setProduct({ ...product, price: e.target.value })}
+          />
+          <label>Description</label>
+          <input
+            onChange={(e) =>
+              setProduct({ ...product, description: e.target.value })
+            }
+          />
+          <label>Image URL *</label>
+          <input
+            // type="file"
+            required
+            onChange={(e) => setProduct({ ...product, img: e.target.value })}
+          />
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    </>
   );
 }
 

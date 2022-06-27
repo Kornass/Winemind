@@ -7,10 +7,9 @@ import { useState, useEffect } from "react";
 function UserDashBoard({ user }) {
   return (
     <>
-      <h2>Add product</h2>
+      <ProviderDetails user={user} />
       <AddProduct user={user} />
 
-      <ProviderDetails user={user} />
       <h2>Your products</h2>
       <UserProducts user={user} />
     </>
