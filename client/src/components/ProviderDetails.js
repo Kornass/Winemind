@@ -5,7 +5,7 @@ function ProviderDetails({ user }) {
   const [updated, setUpdated] = useState("");
   const [editing, setEditing] = useState(false);
 
-  const updateInfo = (e) => {
+  const updateInfo = () => {
     setEditing(!editing);
   };
   const handleEdit = () => {

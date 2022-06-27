@@ -120,3 +120,11 @@ button {
 .to-edit {
   display: inline;
 }
+/* Delete product button */
+.delete {
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
