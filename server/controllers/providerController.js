@@ -88,7 +88,19 @@ class ProviderController {
 
   // updates/edits user information
   async userUpdate(req, res) {
+    let { oldName, updated } = req.body;
     try {
+      const sendUpdate = await Provider.updateOne(
+        { name: oldName },
+        {
+          name: updated.name,
+          eMail: updated.eMail,
+          companyName: updated.companyName,
+          image: updated.image,
+          active: updated.active,
+        }
+      );
+      res.send({ sendUpdate });
     } catch (e) {
       res.send({ e });
     }

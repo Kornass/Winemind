@@ -1,15 +1,45 @@
 import { useState, useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
+import axios from "axios";
+import { URL } from "../config";
+
 function ProviderDetails({ user }) {
-  const [old, setOld] = useState(user);
-  const [updated, setUpdated] = useState("");
+  // const [old, setOld] = useState(user);
+  const [updated, setUpdated] = useState({
+    name: "",
+    eMail: "",
+    companyName: "",
+    image: user.image,
+    active: user.active,
+  });
   const [editing, setEditing] = useState(false);
 
   const updateInfo = () => {
     setEditing(!editing);
   };
-  const handleEdit = () => {
-    console.log("make changes");
+  const updateUser = (e) => {
+    debugger;
+    e.preventDefault();
+    let url = `${URL}/user/${user.name}/update`;
+    axios
+      .post(url, {
+        oldName: user.name,
+        name: updated.name,
+        eMail: updated.eMail,
+        companyName: updated.companyName,
+        image: user.image,
+        active: user.active,
+      })
+      .then((res) => {
+        setUpdated({
+          name: "",
+          eMail: "",
+          companyName: "",
+          image: user.image,
+          active: user.active,
+        });
+        // setEditing(!editing);
+      });
   };
   return (
     <>
@@ -19,11 +49,32 @@ function ProviderDetails({ user }) {
       </button>
       <div>
         {editing ? (
-          <form>
-            <input defaultValue={user.name} />
-            <input defaultValue={user.eMail} />
-            <input defaultValue={user.companyName} />
-            <input type="submit" value="submit" onClick={handleEdit} />
+          <form onSubmit={updateUser}>
+            <input
+              defaultValue={user.name}
+              onChange={(e) =>
+                setUpdated({
+                  ...updated,
+                  name: e.target.value ? e.target.value : user.name,
+                })
+              }
+            />
+            <input
+              defaultValue={user.eMail}
+              onChange={(e) =>
+                setUpdated({ ...updated, eMail: e.target.value || user.eMail })
+              }
+            />
+            <input
+              defaultValue={user.companyName}
+              onChange={(e) =>
+                setUpdated({
+                  ...updated,
+                  companyName: e.target.value,
+                })
+              }
+            />
+            <input type="Submit" defaultValue="Submit" />
           </form>
         ) : (
           <div>
