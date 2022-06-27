@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
 
-function AddProduct() {
+function AddProduct({ user }) {
   const [product, setProduct] = useState({
     wineName: "",
     type: "",
     vintage: "",
+    provider_id: "",
+    provider: "",
     country: json[0].countryName,
     region: "",
     producer: "",
@@ -17,7 +19,6 @@ function AddProduct() {
   });
 
   useEffect(() => {
-    console.log(product);
     let idx = json.findIndex((e) => e.countryName == product.country);
     setProduct({ ...product, region: json[idx].regions[0].name });
   }, [product.country]);
@@ -37,6 +38,7 @@ function AddProduct() {
         wineName: product.wineName,
         type: product.type,
         vintage: product.vintage,
+        provider_id: user._id,
         producer: product.producer,
         country: product.country,
         region: product.region,
@@ -51,6 +53,7 @@ function AddProduct() {
           wineName: "",
           type: "",
           vintage: "",
+          provider_id: "",
           country: json[0].countryName,
           region: "",
           producer: "",

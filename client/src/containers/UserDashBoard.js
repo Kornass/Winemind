@@ -1,10 +1,14 @@
 import AddProduct from "./AddProduct";
+import UserProducts from "./UserProducts";
+import ProviderDetails from "../components/ProviderDetails";
 import { useState, useEffect } from "react";
-function UserDashBoard() {
-  const [products, setProducts] = useState();
+
+function UserDashBoard({ user }) {
   return (
     <>
-      <AddProduct />
+      <AddProduct user={user} />
+      <ProviderDetails user={user} />
+      <UserProducts user={user} />
     </>
   );
 }

@@ -2,7 +2,8 @@ import AdminDashBoard from "./AdminDashBoard";
 import UserDashBoard from "./UserDashBoard";
 
 function UserAccount({ user }) {
-  console.log(user);
-  return <>{user?.admin ? <AdminDashBoard /> : <UserDashBoard />}</>;
+  return (
+    <>{user?.admin ? <AdminDashBoard /> : <UserDashBoard user={user} />}</>
+  );
 }
 export default UserAccount;

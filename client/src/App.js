@@ -44,7 +44,6 @@ function App() {
     setUser(decodedToken.user);
     localStorage.setItem("token", JSON.stringify(token));
     setIsLoggedIn(true);
-    console.log(user);
   };
 
   const logout = () => {

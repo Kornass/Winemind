@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 
 function Navbar({ login, isLoggedIn, logout }) {
   const [openLogin, setOpenLogin] = useState(false);
-  console.log(login, isLoggedIn);
   return (
     <div className="nav">
-      <span>Logo here</span>
+      <Link to="/">
+        <span>Logo here</span>
+      </Link>
       <input placeholder="search" />
 
       {isLoggedIn ? (

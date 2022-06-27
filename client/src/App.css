@@ -87,3 +87,18 @@ button {
   color: red;
   font-weight: bold;
 }
+/* Manage products */
+.products-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.product img {
+  width: 200px;
+}

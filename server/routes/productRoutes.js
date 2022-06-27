@@ -4,7 +4,7 @@ const express = require("express"),
 
 // PRODUCT ROUTES
 
-// ADD PRODUCT
+// ALL PRODUCTS
 router.get("/all", controller.allProd);
 
 // EDIT/UPDATE PRODUCT

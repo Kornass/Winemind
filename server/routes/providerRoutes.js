@@ -21,6 +21,7 @@ router.get("/all", controller.showAll);
 
 //SHOW A CERTAIN PROVIDER'S INFORMATION
 router.get("/:name/", controller.getInfo);
+
 // TOKEN VERIFICATION
 router.post("/verify_token", controller.verify_token);
 

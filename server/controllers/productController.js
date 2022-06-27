@@ -11,6 +11,7 @@ class ProductController {
       type,
       vintage,
       country,
+      provider_id,
       region,
       producer,
       price,
@@ -24,6 +25,7 @@ class ProductController {
         name,
         type,
         country,
+        provider_id,
         region,
         vintage,
         producer,
@@ -58,6 +60,8 @@ class ProductController {
   // Show all products
   async allProd(req, res) {
     try {
+      const allProd = await Product.find();
+      res.send(allProd);
     } catch (e) {
       res.send({ e });
     }
@@ -65,7 +69,11 @@ class ProductController {
 
   // Show all products from one provider
   async allProdFromProv(req, res) {
+    let { name } = req.params;
     try {
+      let prov = await Provider.findOne({ name: name });
+      const products = await Product.find({ provider_id: prov._id });
+      res.send(products);
     } catch (e) {
       res.send({ e });
     }
