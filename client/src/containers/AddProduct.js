@@ -51,11 +51,11 @@ function AddProduct({ user }) {
         console.log(res.status);
         setProduct({
           wineName: "",
-          type: "",
+          type: "red",
           vintage: "",
-          provider_id: "",
+          provider_id: user._id,
           country: json[0].countryName,
-          region: "",
+          region: "Badakhshan",
           producer: "",
           price: "",
           description: "",
