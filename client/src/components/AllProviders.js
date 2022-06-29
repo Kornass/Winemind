@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
+import DeleteUser from "./DeteleUser";
 
 function AllProviders() {
-  const [active, setActive] = useState(false);
+  const [provider, setProvider] = useState({});
   const [allProviders, setAllProviders] = useState();
-  // const []
+  const [active, setActive] = useState();
+  // console.log(provider, active);
 
   const getProviders = async () => {
+    // debugger;
     let url = `${URL}/user/all`;
     try {
       const res = await axios.get(url);
@@ -17,14 +20,17 @@ function AllProviders() {
     }
   };
 
-  const userActivate = (id) => {
-    // console.log(id);
+  const userActivate = () => {
+    // debugger;
     let url = `${URL}/admin/activate`;
     axios
-      .post(url, { toChangeUser: id, active: active })
+      .post(url, {
+        toChangeUser: provider.name,
+        active: active,
+      })
       .then((res) => {
-        console.log(res);
-        setActive(!active);
+        console.log(res.data);
+        setProvider({});
       })
       .catch((e) => {
         alert(e);
@@ -33,7 +39,7 @@ function AllProviders() {
 
   useEffect(() => {
     getProviders();
-  }, []);
+  }, [allProviders]);
   return (
     <>
       <h2>All providers</h2>
@@ -55,23 +61,33 @@ function AllProviders() {
                   <td>{provider.companyName}</td>
                   <td>
                     <div className="active">
-                      Active
                       {provider.active ? (
                         <input
                           type="checkbox"
                           checked="checked"
-                          onChange={() => userActivate(provider._id)}
+                          onChange={() => {
+                            setProvider(provider);
+                            setActive(!provider.active);
+                            userActivate();
+                          }}
                         />
                       ) : (
                         <input
                           type="checkbox"
-                          onChange={() => userActivate(provider._id)}
+                          onChange={() => {
+                            setProvider(provider);
+                            setActive(!provider.active);
+                            userActivate();
+                          }}
                         />
                       )}
                     </div>
                   </td>
                   <td>
-                    <button>X</button>
+                    <DeleteUser
+                      setAllProviders={setAllProviders}
+                      provider={provider}
+                    />
                   </td>
                 </tr>
               );

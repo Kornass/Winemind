@@ -69,7 +69,14 @@ class ProductController {
       res.send({ e });
     }
   }
-
+  // Single product
+  async singleProduct(req, res) {
+    let { id } = req.params;
+    try {
+    } catch (e) {
+      res.send(e);
+    }
+  }
   // Show all products from one provider
   async allProdFromProv(req, res) {
     let { id } = req.params;

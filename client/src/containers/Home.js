@@ -1,47 +1,9 @@
 import Filtering from "../components/Filtering";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { URL } from "../config";
+import AllProducts from "../components/AllProducts";
 
 function Home({ allProd, setAllProd, onAdd }) {
-  // Fetchin all products
-  const AllProducts = async () => {
-    let url = `${URL}/product/all`;
-    try {
-      const res = await axios.get(url);
-      setAllProd(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  useEffect(() => {
-    AllProducts();
-  }, []);
-
-  const displayProducts = () => {
-    return (
-      <>
-        {allProd &&
-          allProd.map((item) => (
-            <div className="product" key={item._id}>
-              <img src={item.img} />
-              <p>
-                {item.name}, {item.vintage}, {item.producer}
-              </p>
-              <p>{item.price}</p>
-              <button onClick={() => onAdd(item)}>Add to cart</button>
-            </div>
-          ))}
-      </>
-    );
-  };
-
   return (
-    <>
-      <div className="main">
-        <div className="products-container">{displayProducts()}</div>
-      </div>
-    </>
+    <AllProducts allProd={allProd} setAllProd={setAllProd} onAdd={onAdd} />
   );
 }
 export default Home;

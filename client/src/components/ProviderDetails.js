@@ -20,7 +20,6 @@ function ProviderDetails({ user, setUser }) {
     axios
       .post(url, { oldUser: user.name, updatedUser: updated })
       .then((res) => {
-        // console.log(res);
         console.log(res.data);
         setUser({
           ...user,

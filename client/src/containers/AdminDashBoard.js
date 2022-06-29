@@ -1,10 +1,10 @@
-import AddProduct from "./AddProduct";
-import AllProviders from "./AllProviders";
-function AdminDashBoard() {
+import AddProduct from "../components/AddProduct";
+import AllProviders from "../components/AllProviders";
+function AdminDashBoard({ user }) {
   return (
     <>
       <AllProviders />
-      <AddProduct />
+      <AddProduct user={user} />
     </>
   );
 }

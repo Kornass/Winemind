@@ -18,7 +18,7 @@ class AdminController {
         { _id: toChangeUser },
         {
           $set: {
-            active: !active,
+            active: active,
           },
         }
       );

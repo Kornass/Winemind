@@ -1,8 +1,6 @@
-import AddProduct from "./AddProduct";
-import UserProducts from "./UserProducts";
+import AddProduct from "../components/AddProduct";
+import UserProducts from "../components/UserProducts";
 import ProviderDetails from "../components/ProviderDetails";
-
-import { useState, useEffect } from "react";
 
 function UserDashBoard({ user, setUser }) {
   return (

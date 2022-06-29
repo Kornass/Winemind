@@ -4,6 +4,7 @@ import axios from "axios";
 import { URL } from "../config";
 
 function AddProduct({ user }) {
+  // console.log(user);
   const [product, setProduct] = useState({
     wineName: "",
     type: "red",
@@ -18,13 +19,13 @@ function AddProduct({ user }) {
   });
 
   useEffect(() => {
-    let idx = json.findIndex((e) => e.countryName == product.country);
+    let idx = json.findIndex((e) => e.countryName === product.country);
     setProduct({ ...product, region: json[idx].regions[0].name });
   }, [product.country]);
 
   const regFinder = () => {
     if (product.country) {
-      let idx = json.findIndex((e) => e.countryName == product.country);
+      let idx = json.findIndex((e) => e.countryName === product.country);
       return json[idx].regions.map((e, i) => <option key={i}>{e.name}</option>);
     }
   };
@@ -61,7 +62,6 @@ function AddProduct({ user }) {
           description: "",
           img: "",
         });
-        // console.log();
 
         alert("Product was added successfully");
       })

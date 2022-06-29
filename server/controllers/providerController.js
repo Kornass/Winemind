@@ -81,7 +81,10 @@ class ProviderController {
   }
   //Delete user
   async delete(req, res) {
+    let { _id } = req.body;
     try {
+      const removed = await Provider.deleteOne({ _id });
+      res.send({ removed });
     } catch (e) {
       res.send({ e });
     }

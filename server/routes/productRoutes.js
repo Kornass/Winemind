@@ -16,6 +16,9 @@ router.post("/delete", controller.delete);
 // ADD A PRODUCT
 router.post("/add", controller.insert);
 
+// GET ONE PRODUCT WITH SPECIFIED ID
+router.post('/single/:id', controller.singleProduct)
+
 //GET ALL THE PRODUCTS FROM A PROVIDER
 router.get("/:id/products", controller.allProdFromProv);
 
