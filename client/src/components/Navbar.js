@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function Navbar({ login, isLoggedIn, logout }) {
   const [openLogin, setOpenLogin] = useState(false);
+
   return (
     <div className="nav">
       <Link to="/">
@@ -27,10 +28,9 @@ function Navbar({ login, isLoggedIn, logout }) {
           <LogIn open={openLogin} login={login} />
         </div>
       )}
-
-      <a>
+      <Link to="/Cart">
         <img src={cart} alt="cart" />
-      </a>
+      </Link>
     </div>
   );
 }

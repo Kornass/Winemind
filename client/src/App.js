@@ -21,6 +21,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [token, setToken] = useState(null);
   const [user, setUser] = useState({});
+  const [cart, setCart] = useState([]);
+  const [allProd, setAllProd] = useState(null);
 
   useEffect(() => {
     const verify_token = async () => {
@@ -38,7 +40,32 @@ function App() {
     };
     verify_token();
   }, [token]);
-
+  // cart functions
+  const onAdd = (product) => {
+    const exist = cart.find((ele) => ele._id === product._id);
+    if (exist) {
+      setCart(
+        cart.map((ele) =>
+          ele._id === product._id ? { ...exist, qty: exist.qty + 1 } : ele
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
+  const onRemove = (product) => {
+    const exist = cart.find((ele) => ele._id === product._id);
+    if (exist.qty === 1) {
+      setCart(cart.filter((ele) => ele._id !== product._id));
+    } else {
+      setCart(
+        cart.map((ele) =>
+          ele._id === product._id ? { ...exist, qty: exist.qty - 1 } : ele
+        )
+      );
+    }
+  };
+  // end of cart function
   const login = (token) => {
     let decodedToken = jose.decodeJwt(token);
     setUser(decodedToken.user);
@@ -54,11 +81,36 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar login={login} isLoggedIn={isLoggedIn} logout={logout} />
+        <Navbar
+          login={login}
+          isLoggedIn={isLoggedIn}
+          logout={logout}
+          cart={cart}
+        />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                allProd={allProd}
+                setAllProd={setAllProd}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            }
+          />
           <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cart={cart}
+                setCart={setCart}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            }
+          />
           <Route
             path="/myAccount"
             element={

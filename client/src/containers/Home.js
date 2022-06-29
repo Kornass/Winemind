@@ -3,8 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { URL } from "../config";
 
-function Home() {
-  const [allProd, setAllProd] = useState(null);
+function Home({ allProd, setAllProd, onAdd }) {
   // Fetchin all products
   const AllProducts = async () => {
     let url = `${URL}/product/all`;
@@ -30,6 +29,7 @@ function Home() {
                 {item.name}, {item.vintage}, {item.producer}
               </p>
               <p>{item.price}</p>
+              <button onClick={() => onAdd(item)}>Add to cart</button>
             </div>
           ))}
       </>
