@@ -66,6 +66,7 @@ function App() {
     }
   };
   // end of cart function
+
   const login = (token) => {
     let decodedToken = jose.decodeJwt(token);
     setUser(decodedToken.user);
@@ -114,7 +115,7 @@ function App() {
           <Route
             path="/myAccount"
             element={
-              !isLoggedIn ? <Navigate to="/" /> : <UserAccount user={user} />
+              !isLoggedIn ? <Navigate to="/" /> : <UserAccount setUser={setUser} user={user} />
             }
           />
           {/* based on unique id of product (sku) */}

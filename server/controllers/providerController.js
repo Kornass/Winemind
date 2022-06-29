@@ -8,7 +8,7 @@ const jwt_secret = process.env.JWT_SECRET;
 class ProviderController {
   // Register account
   async userRegister(req, res) {
-    let { name, password, eMail, companyName, image } = req.body;
+    let { name, password, eMail, companyName, image, admin } = req.body;
 
     try {
       const user = await Provider.findOne({ name });
@@ -29,6 +29,7 @@ class ProviderController {
         companyName,
         image,
         active: false,
+        admin,
       });
       res.send({ ok: true, message: "User successfully registered!" });
     } catch (e) {
@@ -88,16 +89,16 @@ class ProviderController {
 
   // updates/edits user information
   async userUpdate(req, res) {
-    let { oldName, updated } = req.body;
+    let { oldUser, updatedUser } = req.body;
     try {
       const sendUpdate = await Provider.updateOne(
-        { name: oldName },
+        { name: oldUser },
         {
-          name: updated.name,
-          eMail: updated.eMail,
-          companyName: updated.companyName,
-          image: updated.image,
-          active: updated.active,
+          $set: {
+            name: updatedUser.name,
+            eMail: updatedUser.eMail,
+            companyName: updatedUser.companyName,
+          },
         }
       );
       res.send({ sendUpdate });

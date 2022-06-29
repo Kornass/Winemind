@@ -17,6 +17,6 @@ router.post("/delete", controller.delete);
 router.post("/add", controller.insert);
 
 //GET ALL THE PRODUCTS FROM A PROVIDER
-router.get("/:name/products", controller.allProdFromProv);
+router.get("/:id/products", controller.allProdFromProv);
 
 module.exports = router;

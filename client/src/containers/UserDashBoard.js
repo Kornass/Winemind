@@ -4,10 +4,10 @@ import ProviderDetails from "../components/ProviderDetails";
 
 import { useState, useEffect } from "react";
 
-function UserDashBoard({ user }) {
+function UserDashBoard({ user, setUser }) {
   return (
     <>
-      <ProviderDetails user={user} />
+      <ProviderDetails user={user} setUser={setUser} />
       <AddProduct user={user} />
 
       <h2>Your products</h2>

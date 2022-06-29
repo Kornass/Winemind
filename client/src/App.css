@@ -128,3 +128,27 @@ button {
   background: none;
   border: none;
 }
+/* All providers diplay in Admin Dashboard */
+.providers {
+  width: 80%;
+  margin: auto;
+  border-collapse: collapse;
+}
+.providers td,
+.providers th {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+}
+.providers th {
+  background-color: orange;
+  color: white;
+}
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.active input {
+  width: 20px;
+}

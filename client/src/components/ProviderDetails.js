@@ -3,14 +3,11 @@ import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import { URL } from "../config";
 
-function ProviderDetails({ user }) {
-  // const [old, setOld] = useState(user);
+function ProviderDetails({ user, setUser }) {
   const [updated, setUpdated] = useState({
     name: "",
     eMail: "",
     companyName: "",
-    image: user.image,
-    active: user.active,
   });
   const [editing, setEditing] = useState(false);
 
@@ -18,27 +15,38 @@ function ProviderDetails({ user }) {
     setEditing(!editing);
   };
   const updateUser = (e) => {
-    debugger;
+    // debugger;
+    // if (!updated.name) {
+    //   setUpdated({ ...updated, name: user.name });
+    // }
+    // if (!updated.eMail) {
+    //   setUpdated({ ...updated, eMail: user.eMail });
+    // }
+    // if (!updated.companyName) {
+    //   setUpdated({ ...updated, companyName: user.companyName });
+    // }
     e.preventDefault();
-    let url = `${URL}/user/${user.name}/update`;
+    let url = `${URL}/user/${user._id}/update`;
     axios
-      .post(url, {
-        oldName: user.name,
-        name: updated.name,
-        eMail: updated.eMail,
-        companyName: updated.companyName,
-        image: user.image,
-        active: user.active,
-      })
+      .post(url, { oldUser: user.name, updatedUser: updated })
       .then((res) => {
+        // console.log(res);
+        console.log(res.data);
+        setUser({
+          ...user,
+          name: updated.name,
+          eMail: updated.eMail,
+          companyName: updated.companyName,
+        });
         setUpdated({
           name: "",
           eMail: "",
           companyName: "",
-          image: user.image,
-          active: user.active,
         });
-        // setEditing(!editing);
+        setEditing(!editing);
+      })
+      .catch((e) => {
+        alert(e);
       });
   };
   return (
@@ -55,14 +63,14 @@ function ProviderDetails({ user }) {
               onChange={(e) =>
                 setUpdated({
                   ...updated,
-                  name: e.target.value ? e.target.value : user.name,
+                  name: e.target.value,
                 })
               }
             />
             <input
               defaultValue={user.eMail}
               onChange={(e) =>
-                setUpdated({ ...updated, eMail: e.target.value || user.eMail })
+                setUpdated({ ...updated, eMail: e.target.value })
               }
             />
             <input

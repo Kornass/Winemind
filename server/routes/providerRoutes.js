@@ -14,7 +14,7 @@ router.post("/login", controller.userLogIn);
 router.post("/delete", controller.delete);
 
 // EDIT/UPDATE PROVIDER INFO
-router.post("/:user/update", controller.userUpdate);
+router.post("/:id/update", controller.userUpdate);
 
 //SHOW ALL PROVIDERS
 router.get("/all", controller.showAll);

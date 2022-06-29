@@ -1,7 +1,9 @@
 import AddProduct from "./AddProduct";
-function AdminDashBoard() {
+import AllProviders from "./AllProviders";
+function AdminDashBoard({ user }) {
   return (
     <>
+      <AllProviders user={user} />
       <AddProduct />
     </>
   );

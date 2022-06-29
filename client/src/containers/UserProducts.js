@@ -4,13 +4,13 @@ import { URL } from "../config";
 import { FaTimes, FaEdit } from "react-icons/fa";
 
 function UserProducts({ user }) {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [toUpdate, setToUpdate] = useState(false);
   const [toRemove, setToRemove] = useState("");
 
   const providerProducts = async () => {
     // debugger;
-    let url = `${URL}/product/${user.name}/products`;
+    let url = `${URL}/product/${user._id}/products`;
     try {
       const res = await axios.get(url);
       setProducts(res.data);

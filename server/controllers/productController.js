@@ -69,9 +69,9 @@ class ProductController {
 
   // Show all products from one provider
   async allProdFromProv(req, res) {
-    let { name } = req.params;
+    let { id } = req.params;
     try {
-      let prov = await Provider.findOne({ name: name });
+      let prov = await Provider.findOne({ _id: id });
       const products = await Product.find({ provider_id: prov._id });
       res.send(products);
     } catch (e) {
