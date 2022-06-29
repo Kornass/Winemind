@@ -61,6 +61,7 @@ function AddProduct({ user }) {
           description: "",
           img: "",
         });
+        // console.log();
 
         alert("Product was added successfully");
       })

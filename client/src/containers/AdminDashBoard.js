@@ -1,9 +1,9 @@
 import AddProduct from "./AddProduct";
 import AllProviders from "./AllProviders";
-function AdminDashBoard({ user }) {
+function AdminDashBoard() {
   return (
     <>
-      <AllProviders user={user} />
+      <AllProviders />
       <AddProduct />
     </>
   );

@@ -3,14 +3,9 @@ import axios from "axios";
 import { URL } from "../config";
 
 function AllProviders() {
-  //   const [updated, setUpdated] = useState({
-  //     name: user.name,
-  //     eMail: user.eMail,
-  //     companyName: user.companyName,
-  //     image: user.image,
-  //     active: user.active,
-  //   });
+  const [active, setActive] = useState(false);
   const [allProviders, setAllProviders] = useState();
+  // const []
 
   const getProviders = async () => {
     let url = `${URL}/user/all`;
@@ -21,19 +16,19 @@ function AllProviders() {
       console.log(e);
     }
   };
-  const updateUser = (provider) => {
-    console.log(provider, provider.active);
-    let url = `${URL}/user/${provider.name}/update`;
+
+  const userActivate = (id) => {
+    // console.log(id);
+    let url = `${URL}/admin/activate`;
     axios
-      .post(url, {
-        oldName: provider.name,
-        name: provider.name,
-        eMail: provider.eMail,
-        companyName: provider.companyName,
-        image: provider.image,
-        active: provider.active,
+      .post(url, { toChangeUser: id, active: active })
+      .then((res) => {
+        console.log(res);
+        setActive(!active);
       })
-      .then((res) => {});
+      .catch((e) => {
+        alert(e);
+      });
   };
 
   useEffect(() => {
@@ -49,6 +44,7 @@ function AllProviders() {
             <th>e-mail</th>
             <th>Company</th>
             <th>Active</th>
+            <th>Delete</th>
           </tr>
           {allProviders &&
             allProviders.map((provider, i) => {
@@ -64,15 +60,18 @@ function AllProviders() {
                         <input
                           type="checkbox"
                           checked="checked"
-                          onChange={updateUser}
+                          onChange={() => userActivate(provider._id)}
                         />
                       ) : (
                         <input
                           type="checkbox"
-                          onChange={() => updateUser(provider)}
+                          onChange={() => userActivate(provider._id)}
                         />
                       )}
                     </div>
+                  </td>
+                  <td>
+                    <button>X</button>
                   </td>
                 </tr>
               );
