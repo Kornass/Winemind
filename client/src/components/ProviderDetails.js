@@ -15,16 +15,6 @@ function ProviderDetails({ user, setUser }) {
     setEditing(!editing);
   };
   const updateUser = (e) => {
-    // debugger;
-    // if (!updated.name) {
-    //   setUpdated({ ...updated, name: user.name });
-    // }
-    // if (!updated.eMail) {
-    //   setUpdated({ ...updated, eMail: user.eMail });
-    // }
-    // if (!updated.companyName) {
-    //   setUpdated({ ...updated, companyName: user.companyName });
-    // }
     e.preventDefault();
     let url = `${URL}/user/${user._id}/update`;
     axios

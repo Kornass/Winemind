@@ -61,7 +61,8 @@ function AddProduct({ user }) {
           description: "",
           img: "",
         });
-        console.log(product);
+        // console.log();
+
         alert("Product was added successfully");
       })
       .catch((e) => {
