@@ -6,12 +6,11 @@ import { URL } from "../config";
 function AddProduct({ user }) {
   const [product, setProduct] = useState({
     wineName: "",
-    type: "",
+    type: "red",
     vintage: "",
-    provider_id: "",
-    provider: "",
+    provider_id: user._id,
     country: json[0].countryName,
-    region: "",
+    region: "Badakhshan",
     producer: "",
     price: "",
     description: "",
@@ -31,6 +30,7 @@ function AddProduct({ user }) {
   };
 
   const add = (e) => {
+    console.log(user);
     e.preventDefault();
     let url = `${URL}/product/add`;
     axios
@@ -97,7 +97,7 @@ function AddProduct({ user }) {
           />
           <label>Type *</label>
           <select
-            defaultValue={"red"}
+            defaultValue="red"
             required
             onChange={(e) => setProduct({ ...product, type: e.target.value })}
           >

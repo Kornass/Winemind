@@ -5,8 +5,6 @@ import { FaTimes, FaEdit } from "react-icons/fa";
 
 function UserProducts({ user }) {
   const [products, setProducts] = useState([]);
-  const [toUpdate, setToUpdate] = useState(false);
-  const [toRemove, setToRemove] = useState("");
 
   const providerProducts = async () => {
     // debugger;
@@ -23,21 +21,23 @@ function UserProducts({ user }) {
     providerProducts();
   }, [products]);
 
-  const handleDelete = (id) => {
-    setToRemove();
-    // const answer = window.confirm("You sure?");
-    // answer &&
-    console.log(id);
+  const handleDelete = (_id) => {
+    let url = `${URL}/product/delete`;
+    axios.post(url, {
+      _id: _id,
+    });
   };
-
-  // const handleDeleteClick = () => {};
 
   return (
     <div className="products-container">
       {products &&
         products.map((item) => (
           <div className="product" key={item._id}>
-            <button className="delete" id={item._id} onClick={handleDelete}>
+            <button
+              className="delete"
+              id={item._id}
+              onClick={() => handleDelete(item._id)}
+            >
               {item.id}
               <FaTimes color="orange" />
             </button>

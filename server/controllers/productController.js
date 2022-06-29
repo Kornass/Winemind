@@ -43,7 +43,10 @@ class ProductController {
 
   // Deletes product
   async delete(req, res) {
+    let { _id } = req.body;
     try {
+      const removed = await Product.deleteOne({ _id });
+      res.send({ removed });
     } catch (e) {
       res.send({ e });
     }
