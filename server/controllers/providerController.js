@@ -60,7 +60,6 @@ class ProviderController {
           expiresIn: "2h",
         });
         user.password = null;
-        console.log(user);
         res.send({ ok: true, message: "Welcome back", user, token });
         console.log(token);
       } else return res.send({ ok: false, message: "invalid data provided" });

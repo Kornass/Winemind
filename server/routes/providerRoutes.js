@@ -28,4 +28,6 @@ router.get("/:name/", controller.getInfo);
 // TOKEN VERIFICATION
 router.post("/verify_token", controller.verify_token);
 
+// router.post("/activate", controller.userActivate);
+
 module.exports = router;

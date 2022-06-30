@@ -4,7 +4,7 @@ const express = require("express"),
 
 // SUPER ADMIN ROUTES
 
-router.post("/login", controller.logIn);
+// router.post("/login", controller.logIn);
 
 // ACTIVATE USER
 router.post("/activate", controller.userActivate);

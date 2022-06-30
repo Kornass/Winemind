@@ -48,7 +48,7 @@ const Countries = require("./models/countriesSchema");
 // Pass configuration settings to AdminJS
 const adminJS = new AdminJS({
   resources: [Providers, Products, Regions, Countries],
-  rootPath: "/admin",
+  rootPath: "/adminJS",
 });
 // Build and use a router which will handle all AdminJS routes
 const router = AdminJSExpress.buildRouter(adminJS);

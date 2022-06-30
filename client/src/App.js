@@ -128,7 +128,12 @@ function App() {
               !isLoggedIn ? (
                 <Navigate to="/" />
               ) : (
-                <UserAccount setUser={setUser} user={user} />
+                <UserAccount
+                  allProd={allProd}
+                  setAllProd={setAllProd}
+                  setUser={setUser}
+                  user={user}
+                />
               )
             }
           />

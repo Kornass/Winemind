@@ -4,13 +4,9 @@ import { URL } from "../config";
 import DeleteUser from "./DeteleUser";
 
 function AllProviders() {
-  const [provider, setProvider] = useState({});
   const [allProviders, setAllProviders] = useState();
-  const [active, setActive] = useState();
-  // console.log(provider, active);
 
   const getProviders = async () => {
-    // debugger;
     let url = `${URL}/user/all`;
     try {
       const res = await axios.get(url);
@@ -20,17 +16,17 @@ function AllProviders() {
     }
   };
 
-  const userActivate = () => {
-    // debugger;
+  const userActivate = (provider) => {
+    let change = !provider.active;
     let url = `${URL}/admin/activate`;
+
     axios
       .post(url, {
-        toChangeUser: provider.name,
-        active: active,
+        toChangeUser: provider._id,
+        active: change,
       })
       .then((res) => {
         console.log(res.data);
-        setProvider({});
       })
       .catch((e) => {
         alert(e);
@@ -61,26 +57,13 @@ function AllProviders() {
                   <td>{provider.companyName}</td>
                   <td>
                     <div className="active">
-                      {provider.active ? (
-                        <input
-                          type="checkbox"
-                          checked="checked"
-                          onChange={() => {
-                            setProvider(provider);
-                            setActive(!provider.active);
-                            userActivate();
-                          }}
-                        />
-                      ) : (
-                        <input
-                          type="checkbox"
-                          onChange={() => {
-                            setProvider(provider);
-                            setActive(!provider.active);
-                            userActivate();
-                          }}
-                        />
-                      )}
+                      <input
+                        type="checkbox"
+                        checked={provider.active && "checked"}
+                        onChange={() => {
+                          userActivate(provider);
+                        }}
+                      />
                     </div>
                   </td>
                   <td>
