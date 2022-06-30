@@ -1,5 +1,7 @@
 const Admin = require("../models/adminSchema");
 const Provider = require("../models/providersSchema");
+const Product = require("../models/productsSchema");
+
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
 require("dotenv").config({ path: "./.env" });
@@ -93,6 +95,7 @@ class ProviderController {
   async delete(req, res) {
     let { _id } = req.body;
     try {
+      const userProd = await Product.deleteMany({ provider_id: _id });
       const removed = await Provider.deleteOne({ _id });
       res.send({ removed });
     } catch (e) {

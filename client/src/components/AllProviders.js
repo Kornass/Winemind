@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
 import DeleteUser from "./DeteleUser";
+import UserProducts from "./UserProducts";
 
 function AllProviders() {
   const [allProviders, setAllProviders] = useState();
@@ -51,28 +52,33 @@ function AllProviders() {
           {allProviders &&
             allProviders.map((provider, i) => {
               return (
-                <tr key={i}>
-                  <td>{provider.name}</td>
-                  <td>{provider.eMail}</td>
-                  <td>{provider.companyName}</td>
-                  <td>
-                    <div className="active">
-                      <input
-                        type="checkbox"
-                        checked={provider.active && "checked"}
-                        onChange={() => {
-                          userActivate(provider);
-                        }}
+                <>
+                  <tr key={i}>
+                    <td>{provider.name}</td>
+                    <td>{provider.eMail}</td>
+                    <td>{provider.companyName}</td>
+                    <td>
+                      <div className="active">
+                        <input
+                          type="checkbox"
+                          checked={provider.active && "checked"}
+                          onChange={() => {
+                            userActivate(provider);
+                          }}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <DeleteUser
+                        setAllProviders={setAllProviders}
+                        provider={provider}
                       />
-                    </div>
-                  </td>
-                  <td>
-                    <DeleteUser
-                      setAllProviders={setAllProviders}
-                      provider={provider}
-                    />
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                  <tr key={provider._id}>
+                    <UserProducts user={provider} />
+                  </tr>
+                </>
               );
             })}
         </tbody>
