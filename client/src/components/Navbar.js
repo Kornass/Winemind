@@ -1,12 +1,20 @@
-import cart from "../images/cart.png";
+import cartimg from "../images/cart.png";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
+import Cart from "../containers/Cart";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ login, isLoggedIn, logout }) {
+function Navbar({ login, isLoggedIn, logout, cart, setCart, onAdd, onRemove }) {
   const [openLogin, setOpenLogin] = useState(false);
 
+  const showCart = () => {
+    if (document.getElementById("cartPopup").style.display == "block") {
+      document.getElementById("cartPopup").style.display = "none";
+    } else {
+      document.getElementById("cartPopup").style.display = "block";
+    }
+  };
   return (
     <div className="nav">
       <Link to="/">
@@ -28,9 +36,12 @@ function Navbar({ login, isLoggedIn, logout }) {
           <LogIn open={openLogin} login={login} />
         </div>
       )}
-      <Link to="/Cart">
-        <img src={cart} alt="cart" />
-      </Link>
+      <div id="cartPopup" className="cartPopup">
+        <Cart cart={cart} setCart={setCart} onAdd={onAdd} onRemove={onRemove} />
+      </div>
+      <button onClick={showCart}>
+        <img src={cartimg} alt="cart" />
+      </button>
     </div>
   );
 }

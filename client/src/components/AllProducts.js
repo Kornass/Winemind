@@ -21,17 +21,17 @@ function AllProducts({ allProd, setAllProd, onAdd }) {
     return (
       <>
         {allProd &&
-          allProd.map((item) => (
-            <Link to={`/single/${item._id}`} key={item._id}>
-              <div className="product">
+          allProd.map((item, i) => (
+            <div className="product" key={i}>
+              <Link to={`/single/${item.sku}`} key={item._id}>
                 <img src={item.img} alt={`${item.name} bottle`} />
                 <p>
                   {item.name}, {item.vintage}, {item.producer}
                 </p>
                 <p>{item.price}</p>
-                <button onClick={() => onAdd(item)}>Add to cart</button>
-              </div>
-            </Link>
+              </Link>
+              <button onClick={() => onAdd(item)}>Add to cart</button>
+            </div>
           ))}
       </>
     );

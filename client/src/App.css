@@ -152,3 +152,14 @@ button {
 .active input {
   width: 20px;
 }
+/* Popup cart */
+.cartPopup {
+  display: none;
+  color: white;
+  background-color: rgb(56, 32, 32);
+  padding: 1%;
+  width: 350px;
+  position: absolute;
+  top: 60px;
+  right: 30px;
+}
