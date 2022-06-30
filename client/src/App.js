@@ -66,10 +66,20 @@ function App() {
     }
   };
   // end of cart function
+  const loggedInfo = async (id) => {
+    // debugger;
+    let url = `${URL}/user/logged/${id}`;
+    try {
+      const res = await axios.get(url);
+      setUser(res.data.logged);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const login = (token) => {
     let decodedToken = jose.decodeJwt(token);
-    setUser(decodedToken.user);
+    loggedInfo(decodedToken._id);
     localStorage.setItem("token", JSON.stringify(token));
     setIsLoggedIn(true);
   };
@@ -115,7 +125,11 @@ function App() {
           <Route
             path="/myAccount"
             element={
-              !isLoggedIn ? <Navigate to="/" /> : <UserAccount setUser={setUser} user={user} />
+              !isLoggedIn ? (
+                <Navigate to="/" />
+              ) : (
+                <UserAccount setUser={setUser} user={user} />
+              )
             }
           />
           {/* based on unique id of product (sku) */}

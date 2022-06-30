@@ -56,7 +56,7 @@ class ProviderController {
         });
       const match = await argon2.verify(user.password, password);
       if (match) {
-        const token = jwt.sign({ user }, jwt_secret, {
+        const token = jwt.sign({ _id: user._id }, jwt_secret, {
           expiresIn: "2h",
         });
         user.password = null;
@@ -79,6 +79,17 @@ class ProviderController {
         : res.send({ ok: true, succ });
     });
   }
+  // GET LOGGED USER INFO
+  async loggedInfo(req, res) {
+    let { id } = req.params;
+    try {
+      const logged = await Provider.findOne({ _id: id });
+      res.send({ logged });
+    } catch (e) {
+      res.send({ e });
+    }
+  }
+
   //Delete user
   async delete(req, res) {
     let { _id } = req.body;

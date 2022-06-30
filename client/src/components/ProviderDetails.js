@@ -5,9 +5,9 @@ import { URL } from "../config";
 
 function ProviderDetails({ user, setUser }) {
   const [updated, setUpdated] = useState({
-    name: "",
-    eMail: "",
-    companyName: "",
+    name: user.name,
+    eMail: user.eMail,
+    companyName: user.companyName,
   });
   const [editing, setEditing] = useState(false);
 
@@ -15,6 +15,7 @@ function ProviderDetails({ user, setUser }) {
     setEditing(!editing);
   };
   const updateUser = (e) => {
+    debugger;
     e.preventDefault();
     let url = `${URL}/user/${user._id}/update`;
     axios
@@ -48,7 +49,7 @@ function ProviderDetails({ user, setUser }) {
         {editing ? (
           <form onSubmit={updateUser}>
             <input
-              defaultValue={user.name}
+              value={updated.name}
               onChange={(e) =>
                 setUpdated({
                   ...updated,
@@ -57,13 +58,13 @@ function ProviderDetails({ user, setUser }) {
               }
             />
             <input
-              defaultValue={user.eMail}
+              value={updated.eMail}
               onChange={(e) =>
                 setUpdated({ ...updated, eMail: e.target.value })
               }
             />
             <input
-              defaultValue={user.companyName}
+              value={updated.companyName}
               onChange={(e) =>
                 setUpdated({
                   ...updated,

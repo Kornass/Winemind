@@ -10,6 +10,9 @@ router.post("/register", controller.userRegister);
 // LOGIN PROVIDER
 router.post("/login", controller.userLogIn);
 
+// GET LOGGED IN USER DETAILS
+router.get("/logged/:id", controller.loggedInfo);
+
 // DELETE PROVIDER
 router.post("/delete", controller.delete);
 
