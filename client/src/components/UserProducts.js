@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "../config";
-import { FaTimes, FaEdit } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import EditUser from "./EditProduct";
 
 function UserProducts({ user }) {
   const [products, setProducts] = useState([]);
@@ -41,9 +42,11 @@ function UserProducts({ user }) {
               {item.id}
               <FaTimes color="orange" />
             </button>
+            {/* </button>
             <button className="edit">
               <FaEdit color="orange" />
-            </button>
+            </button> */}
+            <EditUser item={item} />
             <img src={item.img} />
             <p>
               {item.name}, {item.vintage}, {item.producer}

@@ -54,7 +54,9 @@ class ProductController {
 
   //Updates/edits product
   async update(req, res) {
+    let { oldProduct, updatedProduct } = req.body;
     try {
+      const sendUpdate = await Product.updateOne();
     } catch (e) {
       res.send({ e });
     }
