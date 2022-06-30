@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 function SingleProduct({ allProd, onAdd }) {
   const [product, setProduct] = useState({});
   let params = useParams();
-
   useEffect(() => {
     let findProduct = () => {
       const idx = allProd.findIndex((item) => item.sku === params.sku);

@@ -1,22 +1,6 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { URL } from "../config";
 import { Link } from "react-router-dom";
 
-function AllProducts({ allProd, setAllProd, onAdd }) {
-  // Fetching all products
-  const AllProducts = async () => {
-    let url = `${URL}/product/all`;
-    try {
-      const res = await axios.get(url);
-      setAllProd(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  useEffect(() => {
-    AllProducts();
-  }, []);
+function AllProducts({ allProd, onAdd }) {
   const displayProducts = () => {
     return (
       <>

@@ -7,7 +7,7 @@ function AddProduct({ user }) {
   // console.log(user);
   const [product, setProduct] = useState({
     wineName: "",
-    type: "red",
+    type: "Red",
     vintage: "",
     provider_id: user._id,
     country: json[0].countryName,
@@ -52,7 +52,7 @@ function AddProduct({ user }) {
         console.log(res.status);
         setProduct({
           wineName: "",
-          type: "red",
+          type: "Red",
           vintage: "",
           provider_id: user._id,
           country: json[0].countryName,

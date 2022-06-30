@@ -24,7 +24,21 @@ function App() {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cartstate")) || []
   );
-  const [allProd, setAllProd] = useState(null);
+  const [allProd, setAllProd] = useState([]);
+
+  // fetch all prods
+  const AllProducts = async () => {
+    let url = `${URL}/product/all`;
+    try {
+      const res = await axios.get(url);
+      setAllProd(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    AllProducts();
+  }, []);
 
   useEffect(() => {
     const verify_token = async () => {
@@ -42,6 +56,7 @@ function App() {
     };
     verify_token();
   }, [token]);
+
   // cart functions
 
   useEffect(() => {
@@ -74,7 +89,6 @@ function App() {
   };
   // end of cart function
   const loggedInfo = async (id) => {
-    // debugger;
     let url = `${URL}/user/logged/${id}`;
     try {
       const res = await axios.get(url);
