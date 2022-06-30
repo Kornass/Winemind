@@ -73,6 +73,8 @@ class ProductController {
   async singleProduct(req, res) {
     let { id } = req.params;
     try {
+      const singleProd = await Product.find({ id });
+      res.send({ ok: true, data: singleProd });
     } catch (e) {
       res.send(e);
     }

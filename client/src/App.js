@@ -21,7 +21,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [token, setToken] = useState(null);
   const [user, setUser] = useState({});
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cartstate")) || []
+  );
   const [allProd, setAllProd] = useState(null);
 
   useEffect(() => {
@@ -41,6 +43,11 @@ function App() {
     verify_token();
   }, [token]);
   // cart functions
+
+  useEffect(() => {
+    localStorage.setItem("cartstate", JSON.stringify(cart));
+  }, [cart]);
+
   const onAdd = (product) => {
     const exist = cart.find((ele) => ele._id === product._id);
     if (exist) {
@@ -97,6 +104,9 @@ function App() {
           isLoggedIn={isLoggedIn}
           logout={logout}
           cart={cart}
+          setCart={setCart}
+          onAdd={onAdd}
+          onRemove={onRemove}
         />
         <Routes>
           <Route
@@ -138,7 +148,10 @@ function App() {
             }
           />
           {/* based on unique id of product (sku) */}
-          <Route path="/wine/:sku" element={<SingleProduct />} />
+          <Route
+            path="/single/:sku"
+            element={<SingleProduct onAdd={onAdd} allProd={allProd} />}
+          />
           {/* based on provider id we display component with information about provider */}
           <Route path="/provider/:id" element={<ProviderPage />} />
         </Routes>
