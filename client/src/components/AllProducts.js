@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-function AllProducts({ allProd, onAdd }) {
+function AllProducts({ toDisplay, onAdd }) {
   const displayProducts = () => {
     return (
       <>
-        {allProd &&
-          allProd.map((item, i) => (
+        {toDisplay &&
+          toDisplay.map((item, i) => (
             <div className="product" key={i}>
               <Link to={`/single/${item.sku}`} key={item._id}>
                 <img src={item.img} alt={`${item.name} bottle`} />
