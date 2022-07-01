@@ -21,7 +21,6 @@ function Navbar({ login, isLoggedIn, logout, cart, setCart, onAdd, onRemove }) {
         <span>Logo here</span>
       </Link>
       <input placeholder="search" />
-
       {isLoggedIn ? (
         <>
           <Link to="/myAccount">
