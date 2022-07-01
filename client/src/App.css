@@ -163,3 +163,24 @@ button {
   top: 60px;
   right: 30px;
 }
+/* Filtering */
+.filter-container {
+  margin: auto;
+  width: 90%;
+  background-color: rgba(162, 155, 155, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+.filter-container > div {
+  width: 12%;
+  margin: 0 5px;
+  border: none;
+}
+.filter-container > div > select {
+  width: 100%;
+}
