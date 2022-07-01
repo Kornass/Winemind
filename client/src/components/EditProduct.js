@@ -102,15 +102,16 @@ function EditUser({ item }) {
             <input required defaultValue={form.grape} name="grape" />
             <label>Year *</label>
             <input
+              name="year"
               minLength="4"
               maxLength="4"
               required
               defaultValue={form.vintage}
             />
             <label>Producer *</label>
-            <input required defaultValue={form.producer} />
+            <input name="producer" required defaultValue={form.producer} />
             <label>Country *</label>
-            <select defaultValue={form.countryName} required>
+            <select name="country" defaultValue={form.countryName} required>
               {json.map((e, i) => (
                 <option key={i} value={e.countryName}>
                   {e.countryName}
@@ -118,16 +119,22 @@ function EditUser({ item }) {
               ))}
             </select>
             <label>Region *</label>
-            <select defaultValue={form.region} required>
+            <select name="region" defaultValue={form.region} required>
               {regFinder()}
             </select>
             <label>Price (in euros) *</label>
-            <input type="Number" required defaultValue={form.price} />
+            <input
+              name="price"
+              type="Number"
+              required
+              defaultValue={form.price}
+            />
             <label>Description</label>
-            <input defaultValue={form.description} />
+            <input name="description" defaultValue={form.description} />
             <label>Image URL *</label>
             <input
               // type="file"
+              name="img"
               required
               defaultValue={form.img}
             />

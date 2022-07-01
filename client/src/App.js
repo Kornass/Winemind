@@ -121,6 +121,7 @@ function App() {
           setCart={setCart}
           onAdd={onAdd}
           onRemove={onRemove}
+          allProd={allProd}
         />
         <Routes>
           <Route

@@ -4,8 +4,18 @@ import LogIn from "./LogIn";
 import Cart from "../containers/Cart";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
-function Navbar({ login, isLoggedIn, logout, cart, setCart, onAdd, onRemove }) {
+function Navbar({
+  login,
+  isLoggedIn,
+  logout,
+  cart,
+  setCart,
+  onAdd,
+  onRemove,
+  allProd,
+}) {
   const [openLogin, setOpenLogin] = useState(false);
 
   const showCart = () => {
@@ -20,7 +30,7 @@ function Navbar({ login, isLoggedIn, logout, cart, setCart, onAdd, onRemove }) {
       <Link to="/">
         <span>Logo here</span>
       </Link>
-      <input placeholder="search" />
+      <Search allProd={allProd} />
 
       {isLoggedIn ? (
         <>
