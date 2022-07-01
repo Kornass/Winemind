@@ -97,7 +97,7 @@ function AddProduct({ user }) {
           />
           <label>Type *</label>
           <select
-            defaultValue="red"
+            defaultValue="Red"
             required
             onChange={(e) => setProduct({ ...product, type: e.target.value })}
           >
@@ -109,8 +109,9 @@ function AddProduct({ user }) {
           </select>
           <label>Year *</label>
           <input
-            minLength="4"
-            maxLength="4"
+            type="Number"
+            min="1900"
+            max={new Date().getFullYear()}
             required
             onChange={(e) =>
               setProduct({ ...product, vintage: e.target.value })
@@ -147,12 +148,13 @@ function AddProduct({ user }) {
           </select>
           <label>Price (in euros) *</label>
           <input
+            min={0}
             type="Number"
             required
             onChange={(e) => setProduct({ ...product, price: e.target.value })}
           />
           <label>Description</label>
-          <input
+          <textarea
             onChange={(e) =>
               setProduct({ ...product, description: e.target.value })
             }
