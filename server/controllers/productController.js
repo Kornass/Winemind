@@ -9,6 +9,7 @@ class ProductController {
       sku,
       wineName: name,
       type,
+      grape,
       vintage,
       country,
       provider_id,
@@ -24,6 +25,7 @@ class ProductController {
         sku,
         name,
         type,
+        grape,
         country,
         provider_id,
         region,
@@ -62,6 +64,7 @@ class ProductController {
           $set: {
             name: updatedProduct.name,
             type: updatedProduct.type,
+            grape: updatedProduct.grape,
             vintage: updatedProduct.vintage,
             country: updatedProduct.country,
             region: updatedProduct.region,

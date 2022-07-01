@@ -8,6 +8,7 @@ function AddProduct({ user }) {
   const [product, setProduct] = useState({
     wineName: "",
     type: "Red",
+    grape: "",
     vintage: "",
     provider_id: user._id,
     country: json[0].countryName,
@@ -38,6 +39,7 @@ function AddProduct({ user }) {
       .post(url, {
         wineName: product.wineName,
         type: product.type,
+        grape: product.grape,
         vintage: product.vintage,
         provider_id: user._id,
         producer: product.producer,
@@ -53,6 +55,7 @@ function AddProduct({ user }) {
         setProduct({
           wineName: "",
           type: "Red",
+          grape: "",
           vintage: "",
           provider_id: user._id,
           country: json[0].countryName,
@@ -107,6 +110,12 @@ function AddProduct({ user }) {
               </option>
             ))}
           </select>
+          <label>Grape *</label>
+          <input
+            required
+            name="grape"
+            onChange={(e) => setProduct({ ...product, grape: e.target.value })}
+          />
           <label>Year *</label>
           <input
             type="Number"

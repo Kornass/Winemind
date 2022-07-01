@@ -18,6 +18,7 @@ function SingleProduct({ allProd, onAdd }) {
       <img src={product.img} alt={`${product.name} bottle`} />
       <p>{product.type} wine</p>
       <p>Year: {product.vintage}</p>
+      <p>Grape: {product.grape}</p>
       <p>Producer: {product.producer}</p>
       <p>Country: {product.country}</p>
       <p>Region: {product.region}</p>

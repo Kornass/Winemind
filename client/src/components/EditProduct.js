@@ -10,6 +10,7 @@ function EditUser({ item }) {
   const [form, setForm] = useState({
     name: item.name,
     type: item.type,
+    grape: item.grape,
     vintage: item.vintage,
     country: item.country,
     region: item.region,
@@ -97,6 +98,8 @@ function EditUser({ item }) {
                 </option>
               ))}
             </select>
+            <label>Grape *</label>
+            <input required defaultValue={form.grape} name="grape" />
             <label>Year *</label>
             <input
               minLength="4"

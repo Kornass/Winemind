@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
     ref: "providers",
   },
   type: { type: String, required: true },
+  grape: { type: String, required: true },
   vintage: { type: Number, required: true },
   producer: { type: String, required: true },
   country: { type: String, required: true },
