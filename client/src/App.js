@@ -38,7 +38,7 @@ function App() {
   };
   useEffect(() => {
     AllProducts();
-  }, []);
+  }, [allProd]);
 
   useEffect(() => {
     const verify_token = async () => {

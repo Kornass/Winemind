@@ -17,7 +17,7 @@ function EditUser({ item }) {
     price: item.price,
     description: item.description,
     img: item.img,
-    sku: item.sku,
+    sku: "",
   });
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,31 +39,24 @@ function EditUser({ item }) {
   };
 
   const handleChange = (e) => {
+    // e.target.name == name &&
+    //   setForm({ ...form, [e.target.name]: e.target.value });
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  // const updateProduct = () => {
 
-  // let url = `${URL}/product/update`;
-  // axios
-  //   .post(url, { oldProduct: item._id, updatedProduct:  })
-  //   .then((res) => {
-  //     console.log(res.data);
-  //     setUser({
-  //       ...user,
-  //       name: updated.name,
-  //       eMail: updated.eMail,
-  //       companyName: updated.companyName,
-  //     });
-  //     setUpdated({
-  //       name: "",
-  //       eMail: "",
-  //       companyName: "",
-  //     });
-  //     setEditing(!editing);
-  //   })
-  //   .catch((e) => {
-  //     alert(e);
-  //   });
+  const updateProduct = () => {
+    debugger;
+    let url = `${URL}/product/update`;
+    axios
+      .post(url, { oldProduct: item._id, updatedProduct: form })
+      .then((res) => {
+        console.log(res.data);
+        toggleModal();
+      })
+      .catch((e) => {
+        alert(e);
+      });
+  };
   const types = [
     "Red",
     "White",
@@ -93,9 +86,9 @@ function EditUser({ item }) {
             X
           </button>
 
-          <form onChange={handleChange}>
+          <form onSubmit={updateProduct} onChange={handleChange}>
             <label>Wine name *</label>
-            <input required name="wineName" defaultValue={form.name} />
+            <input required name="name" defaultValue={form.name} />
             <label>Type *</label>
             <select defaultValue="red" required>
               {types.map((e, i) => (

@@ -56,7 +56,29 @@ class ProductController {
   async update(req, res) {
     let { oldProduct, updatedProduct } = req.body;
     try {
-      const sendUpdate = await Product.updateOne();
+      const sendUpdate = await Product.updateOne(
+        { _id: oldProduct },
+        {
+          $set: {
+            name: updatedProduct.name,
+            type: updatedProduct.type,
+            vintage: updatedProduct.vintage,
+            country: updatedProduct.country,
+            region: updatedProduct.region,
+            producer: updatedProduct.producer,
+            price: updatedProduct.price,
+            description: updatedProduct.description,
+            img: updatedProduct.img,
+            sku:
+              updatedProduct.name +
+              "-" +
+              updatedProduct.vintage +
+              "-" +
+              updatedProduct.producer,
+          },
+        }
+      );
+      res.send({ sendUpdate });
     } catch (e) {
       res.send({ e });
     }
