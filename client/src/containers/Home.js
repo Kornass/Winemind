@@ -1,11 +1,15 @@
 import Filtering from "../components/Filtering";
 import AllProducts from "../components/AllProducts";
 
-function Home({ allProd, setAllProd, onAdd }) {
+function Home({ allProd, toDisplay, setToDisplay, onAdd }) {
   return (
     <>
-      <Filtering allProd={allProd} />
-      <AllProducts allProd={allProd} setAllProd={setAllProd} onAdd={onAdd} />
+      <Filtering
+        toDisplay={toDisplay}
+        allProd={allProd}
+        setToDisplay={setToDisplay}
+      />
+      <AllProducts toDisplay={toDisplay} onAdd={onAdd} />
     </>
   );
 }

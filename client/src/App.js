@@ -25,20 +25,24 @@ function App() {
     JSON.parse(localStorage.getItem("cartstate")) || []
   );
   const [allProd, setAllProd] = useState([]);
+  const [toDisplay, setToDisplay] = useState([]);
 
   // fetch all prods
   const AllProducts = async () => {
+    // debugger;
     let url = `${URL}/product/all`;
     try {
       const res = await axios.get(url);
       setAllProd(res.data);
+      setToDisplay(res.data);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
+    // console.log("smth");
     AllProducts();
-  }, [allProd]);
+  }, []);
 
   useEffect(() => {
     const verify_token = async () => {
@@ -128,8 +132,9 @@ function App() {
             path="/"
             element={
               <Home
+                toDisplay={toDisplay}
+                setToDisplay={setToDisplay}
                 allProd={allProd}
-                setAllProd={setAllProd}
                 onAdd={onAdd}
                 onRemove={onRemove}
               />
