@@ -13,9 +13,13 @@ function SingleProduct({ allProd, onAdd }) {
   }, [allProd]);
 
   return (
-    <>
+    <div className="singleProdDiv">
       <h1>{product.name}</h1>
-      <img src={product.img} alt={`${product.name} bottle`} />
+      <img
+        className="singleImg"
+        src={product.img}
+        alt={`${product.name} bottle`}
+      />
       <p>{product.type} wine</p>
       <p>Year: {product.vintage}</p>
       <p>Grape: {product.grape}</p>
@@ -25,7 +29,7 @@ function SingleProduct({ allProd, onAdd }) {
       <p>{product.description}</p>
       <h1>{product.price}€</h1>
       <button onClick={() => onAdd(product)}>Add to cart</button>
-    </>
+    </div>
   );
 }
 export default SingleProduct;

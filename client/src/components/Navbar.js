@@ -30,7 +30,7 @@ function Navbar({
       <Link to="/">
         <span>Logo here</span>
       </Link>
-      <Search allProd={allProd} />
+      <Search allProd={allProd} onAdd={onAdd} />
 
       {isLoggedIn ? (
         <>
@@ -41,7 +41,7 @@ function Navbar({
         </>
       ) : (
         <div>
-          <p>I'm a nice provider!</p>
+          <p>I'm a provider!</p>
           <SignUp setOpenLogin={setOpenLogin} />
           <LogIn open={openLogin} login={login} />
         </div>

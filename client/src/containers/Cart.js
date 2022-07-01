@@ -1,6 +1,6 @@
 function Cart({ cart, onAdd, onRemove }) {
   const itemsPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
-  const shippingPrice = itemsPrice > 100 ? 0 : 50;
+  const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const totalPrice = itemsPrice + shippingPrice;
   return (
     <>
@@ -23,11 +23,11 @@ function Cart({ cart, onAdd, onRemove }) {
           <hr></hr>
           <div className="row">
             <div className="col-2">Items Price</div>
-            <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>
+            <div className="col-1 text-right">{itemsPrice.toFixed(2)}€</div>
           </div>
           <div className="row">
             <div className="col-2">Shipping Price</div>
-            <div className="col-1 text-right">${shippingPrice.toFixed(2)}</div>
+            <div className="col-1 text-right">{shippingPrice.toFixed(2)}€</div>
           </div>
 
           <div className="row">
@@ -35,7 +35,7 @@ function Cart({ cart, onAdd, onRemove }) {
               <strong>Total Price</strong>
             </div>
             <div className="col-1 text-right">
-              <strong>${totalPrice.toFixed(2)}</strong>
+              <strong>{totalPrice.toFixed(2)}€</strong>
             </div>
           </div>
           <hr />

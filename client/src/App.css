@@ -102,9 +102,14 @@ button {
 }
 .product {
   display: flex;
+  padding: 1%;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 1px;
 }
 .product img {
   width: 200px;
@@ -175,6 +180,27 @@ button {
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
+}
+/* search popup */
+.searchList {
+  display: none;
+  position: absolute;
+  left: 400px;
+  top: 70px;
+  padding: 1%;
+  min-height: 100px;
+  background-color: rgb(245, 237, 220);
+}
+/* single product */
+.singleImg {
+  max-height: 90vh;
+}
+.searchStuff {
+  display: flex;
+}
+.searchImg {
+  width: 80px;
+  height: 100px;
 }
 .filter-container > div {
   width: 12%;
