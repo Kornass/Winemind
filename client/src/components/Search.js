@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+// import { FaSearch } from "react-icons/fa";
 
 function Search({ allProd, onAdd }) {
   const [list, setList] = useState("");
@@ -45,7 +46,12 @@ function Search({ allProd, onAdd }) {
   };
   return (
     <>
-      <input onChange={handleSearch} placeholder="Search..." />
+      <input
+        // placeholder={<FaSearch />}
+        className="searchbar"
+        onChange={handleSearch}
+        placeholder="Search..."
+      />
       <div id="searchList" className="searchList">
         {renderSearch()}
       </div>

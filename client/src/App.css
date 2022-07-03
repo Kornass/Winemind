@@ -22,7 +22,7 @@ select {
   text-align: center;
 }
 /* Finish first Add product template  */
-.viewport {
+.view-viewport {
   height: 100vh;
   opacity: 0.7;
   position: relative;
@@ -34,7 +34,8 @@ select {
   align-items: center;
   list-style: none;
   color: white;
-  position: absolute;
+
+  position: fixed;
   width: 100%;
   font-weight: bold;
   z-index: 1;
@@ -53,9 +54,23 @@ select {
 .nav-btns {
   text-align: center;
 }
-logo {
+.searchbar {
+  color: #fff;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  padding: 3.5px;
+  outline: none;
+  font-family: Arial, FontAwesome;
+}
+.searchbar::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
-  z-index: 1;
+  font-weight: 600;
+  opacity: 1; /* Firefox */
+}
+.view-home {
+  height: 100vh;
 }
 li {
   padding: 10px;

@@ -10,20 +10,22 @@ import carousel5 from "../images/carousel5.jpg";
 function Home({ allProd, setAllProd, toDisplay, setToDisplay, onAdd }) {
   return (
     <>
-      <div className="viewport">
+      <div className="view-viewport">
         <BackgroundSlider
           images={[carousel1, carousel2, carousel3, carousel4, carousel5]}
           duration={6}
           transition={2}
         />
       </div>
-      <Filtering
-        toDisplay={toDisplay}
-        allProd={allProd}
-        // setToDisplay={setToDisplay}
-        setAllProd={setAllProd}
-      />
-      <AllProducts toDisplay={toDisplay} allProd={allProd} onAdd={onAdd} />
+      <div className="view-home">
+        <Filtering
+          toDisplay={toDisplay}
+          allProd={allProd}
+          // setToDisplay={setToDisplay}
+          setAllProd={setAllProd}
+        />
+        <AllProducts toDisplay={toDisplay} allProd={allProd} onAdd={onAdd} />
+      </div>
     </>
   );
 }

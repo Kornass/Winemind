@@ -1,4 +1,4 @@
-import cartimg from "../images/cart.png";
+import cartimg from "../images/cart.svg";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import Cart from "../containers/Cart";
@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Search from "./Search";
 import axios from "axios";
 import { URL } from "../config";
-import logo from "../images/logo.svg";
 
 function Navbar({
   login,
@@ -52,7 +51,9 @@ function Navbar({
   return (
     <div className="nav">
       <Link to="/" onClick={AllProducts}>
-        <p>Logo here</p>
+        <h4 className="logo">Winemind</h4>
+        <p className="logo1">Share your wine</p>
+        <p className="logo1">Buy your bottles</p>
       </Link>
       <Search allProd={allProd} onAdd={onAdd} />
 
