@@ -102,7 +102,7 @@ function EditUser({ item }) {
             <input required defaultValue={form.grape} name="grape" />
             <label>Year *</label>
             <input
-              name="year"
+              name="vintage"
               minLength="4"
               maxLength="4"
               required

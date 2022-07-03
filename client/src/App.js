@@ -25,7 +25,7 @@ function App() {
     JSON.parse(localStorage.getItem("cartstate")) || []
   );
   const [allProd, setAllProd] = useState([]);
-  const [toDisplay, setToDisplay] = useState([]);
+  // const [toDisplay, setToDisplay] = useState([]);
 
   // fetch all prods
   const AllProducts = async () => {
@@ -34,7 +34,7 @@ function App() {
     try {
       const res = await axios.get(url);
       setAllProd(res.data);
-      setToDisplay(res.data);
+      // setToDisplay(res.data);
     } catch (e) {
       console.log(e);
     }
@@ -126,15 +126,17 @@ function App() {
           onAdd={onAdd}
           onRemove={onRemove}
           allProd={allProd}
+          setAllProd={setAllProd}
         />
         <Routes>
           <Route
             path="/"
             element={
               <Home
-                toDisplay={toDisplay}
-                setToDisplay={setToDisplay}
+                // toDisplay={toDisplay}
+                // setToDisplay={setToDisplay}
                 allProd={allProd}
+                setAllProd={setAllProd}
                 onAdd={onAdd}
                 onRemove={onRemove}
               />

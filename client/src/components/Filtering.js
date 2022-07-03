@@ -1,11 +1,10 @@
 import { useState } from "react";
+import AllProducts from "./AllProducts";
 
-function Filtering({ allProd, toDisplay, setToDisplay }) {
+function Filtering({ allProd, setToDisplay, setAllProd }) {
   const handleFiltering = (e) => {
     // debugger;
-    setToDisplay(
-      allProd.filter((x) => x[`${e.target.name}`] === e.target.value)
-    );
+    setAllProd(allProd.filter((x) => x[`${e.target.name}`] == e.target.value));
   };
 
   return (
@@ -15,11 +14,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Wine Name
           </option>
-          {allProd.map((e, i) => (
-            <option key={`name, ${i}`} value={e.name}>
-              {e.name}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.name)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -27,11 +29,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Wine Type
           </option>
-          {allProd.map((e, i) => (
-            <option key={`type, ${i}`} value={e.type}>
-              {e.type}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.type)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -39,11 +44,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Grapes
           </option>
-          {allProd.map((e, i) => (
-            <option key={`grape, ${i}`} value={e.grape}>
-              {e.grape}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.grape)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -51,11 +59,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Vintage
           </option>
-          {allProd.map((e, i) => (
-            <option key={`vintage, ${i}`} value={e.vintage}>
-              {e.vintage}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.vintage)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -63,11 +74,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Country
           </option>
-          {allProd.map((e, i) => (
-            <option key={`country, ${i}`} value={e.country}>
-              {e.country}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.country)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -75,11 +89,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Region
           </option>
-          {allProd.map((e, i) => (
-            <option key={`region, ${i}`} value={e.region}>
-              {e.region}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.region)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -87,11 +104,14 @@ function Filtering({ allProd, toDisplay, setToDisplay }) {
           <option disabled hidden>
             Producer
           </option>
-          {allProd.map((e, i) => (
-            <option key={`producer, ${i}`} value={e.producer}>
-              {e.producer}
-            </option>
-          ))}
+          {allProd
+            .map((e, i) => e.producer)
+            .filter((item, i, ar) => ar.indexOf(item) === i)
+            .map((e, i) => (
+              <option key={`name, ${i}`} value={e}>
+                {e}
+              </option>
+            ))}
         </select>
       </div>
     </form>
