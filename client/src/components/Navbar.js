@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Search from "./Search";
 import axios from "axios";
 import { URL } from "../config";
+import logo from "../images/logo.svg";
 
 function Navbar({
   login,
@@ -51,19 +52,21 @@ function Navbar({
   return (
     <div className="nav">
       <Link to="/" onClick={AllProducts}>
-        <span>Logo here</span>
+        <p>Logo here</p>
       </Link>
       <Search allProd={allProd} onAdd={onAdd} />
 
       {isLoggedIn ? (
         <>
           <Link to="/myAccount">
-            <button>My Account</button>
+            <button className="nav-button">My Account</button>
           </Link>
-          <button onClick={logout}>LogOut</button>
+          <button className="nav-button" onClick={logout}>
+            LogOut
+          </button>
         </>
       ) : (
-        <div>
+        <div className="nav-btns">
           <p>I'm a provider!</p>
           <SignUp setOpenLogin={setOpenLogin} />
           <LogIn open={openLogin} login={login} />

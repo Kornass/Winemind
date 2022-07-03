@@ -49,7 +49,9 @@ function LogIn({ open, login }) {
 
   return (
     <>
-      <button onClick={toggleModal}>LogIn</button>
+      <button className="nav-button" onClick={toggleModal}>
+        LogIn
+      </button>
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}

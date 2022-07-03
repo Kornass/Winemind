@@ -73,7 +73,7 @@ function SignUp({ setOpenLogin }) {
   };
   return (
     <>
-      <button className="add" onClick={toggleModal}>
+      <button className="nav-button" onClick={toggleModal}>
         SignUp
       </button>
       <Modal

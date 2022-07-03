@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+
 * {
   margin: 0;
   box-sizing: border-box;
+}
+body {
+  font-family: "Nunito", sans-serif;
 }
 /* Add product form first template */
 .addform {
@@ -17,13 +22,41 @@ select {
   text-align: center;
 }
 /* Finish first Add product template  */
+.viewport {
+  height: 100vh;
+  opacity: 0.7;
+  position: relative;
+  z-index: -1;
+}
 .nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
+  color: white;
+  position: absolute;
+  width: 100%;
+  font-weight: bold;
+  z-index: 1;
+  opacity: 1.5;
 }
-
+.nav-button {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  /* display: flex; */
+  margin: 0 5px;
+}
+.nav-btns {
+  text-align: center;
+}
+logo {
+  color: white;
+  z-index: 1;
+}
 li {
   padding: 10px;
 }
