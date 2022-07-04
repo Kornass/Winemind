@@ -21,7 +21,7 @@ function Navbar({
 }) {
   const [openLogin, setOpenLogin] = useState(false);
 
-  const showCart = (e) => {
+  const showCart = () => {
     const isCart = document.getElementById("cartPopup");
 
     if (isCart.style.display == "block") {
@@ -76,7 +76,13 @@ function Navbar({
         </div>
       )}
       <div id="cartPopup" className="cartPopup">
-        <Cart cart={cart} setCart={setCart} onAdd={onAdd} onRemove={onRemove} />
+        <Cart
+          cart={cart}
+          setCart={setCart}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          showCart={showCart}
+        />
       </div>
       <button onClick={showCart}>
         <img src={cartimg} alt="cart" />

@@ -13,7 +13,9 @@ function Search({ allProd, onAdd }) {
     }
     setList(e.target.value);
   };
-
+  const resetInput = () => {
+    document.getElementById("searchbar").value = "";
+  };
   const renderSearch = () => {
     const filteredList = allProd.filter((ele) => {
       return (
@@ -29,7 +31,14 @@ function Search({ allProd, onAdd }) {
       return filteredList.map((ele, idx) => {
         return (
           <div key={idx}>
-            <Link to={`/single/${ele.sku}`} key={ele._id}>
+            <Link
+              to={`/single/${ele.sku}`}
+              key={ele._id}
+              onClick={() => {
+                resetInput();
+                handleSearch();
+              }}
+            >
               <div className="searchStuff">
                 <img className="searchImg" src={ele.img} />
                 <p className="searchTitle">{ele.name}</p>
@@ -47,7 +56,7 @@ function Search({ allProd, onAdd }) {
   return (
     <>
       <input
-        // placeholder={<FaSearch />}
+        id="searchbar"
         className="searchbar"
         onChange={handleSearch}
         placeholder="Search..."
