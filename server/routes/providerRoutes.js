@@ -1,6 +1,7 @@
 const express = require("express"),
   router = express.Router(),
   controller = require("../controllers/providerController");
+emailcontroller = require("../controllers/providerController");
 
 // PROVIDER ROUTES
 

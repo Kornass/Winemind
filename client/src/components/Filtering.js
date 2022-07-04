@@ -1,12 +1,21 @@
 import { useState } from "react";
 import AllProducts from "./AllProducts";
+import axios from "axios";
+import { URL } from "../config";
 
 function Filtering({ allProd, setToDisplay, setAllProd }) {
   const handleFiltering = (e) => {
-    // debugger;
     setAllProd(allProd.filter((x) => x[`${e.target.name}`] == e.target.value));
   };
-
+  const AllProducts = async () => {
+    let url = `${URL}/product/all`;
+    try {
+      const res = await axios.get(url);
+      setAllProd(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <form className="filter-container" onChange={handleFiltering}>
       <div>
@@ -114,6 +123,7 @@ function Filtering({ allProd, setToDisplay, setAllProd }) {
             ))}
         </select>
       </div>
+      <input value="clear" type="reset" onClick={AllProducts} />
     </form>
   );
 }

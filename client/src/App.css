@@ -33,8 +33,7 @@ select {
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  color: white;
-
+  color: #f1efe4;
   position: fixed;
   width: 100%;
   font-weight: bold;
@@ -43,9 +42,9 @@ select {
 }
 .nav-button {
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid #f1efe4;
   border-radius: 8px;
-  color: white;
+  color: #f1efe4;
   cursor: pointer;
   font-weight: 500;
   /* display: flex; */
@@ -56,7 +55,7 @@ select {
 }
 .searchbar {
   color: #fff;
-  border: 2px solid white;
+  border: 2px solid #f1efe4;
   border-radius: 5px;
   background: transparent;
   padding: 3.5px;
@@ -64,10 +63,13 @@ select {
   font-family: Arial, FontAwesome;
 }
 .searchbar::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
+  color: #f1efe4;
   font-weight: 600;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+}
+.logo {
+  width: 15%;
+  margin-left: 10px;
 }
 .view-home {
   height: 100vh;
@@ -250,6 +252,7 @@ button {
   width: 80px;
   height: 100px;
 }
+/* filtering */
 .filter-container > div {
   width: 12%;
   margin: 0 5px;
@@ -257,4 +260,39 @@ button {
 }
 .filter-container > div > select {
   width: 100%;
+}
+/* checkout */
+.checkout-item {
+  padding: 10px 5px;
+  border-top: 1px solid #f1efe4;
+  border-bottom: 1px solid #f1efe4;
+}
+.quan {
+  width: 45px;
+}
+.checkout-remove {
+  /* position: absolute; */
+  /* position: relative; */
+  left: 10px;
+  top: 10px;
+}
+.payment {
+  color: #f1efe4;
+  background-color: black;
+  width: 75%;
+  margin: auto;
+  margin-top: 20px;
+}
+.payment button {
+  color: #f1efe4;
+  border: none;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+/* Puts body below the navbar */
+.container {
+  position: relative;
+  top: 150px;
 }

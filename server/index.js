@@ -59,5 +59,6 @@ app.use("/product", productsRoutes);
 app.use("/user", providersRoutes);
 app.use("/admin", adminRoutes);
 
+
 // Set the server to listen on port 3000
 app.listen(port, () => console.log(`listening on port ${port}`));
