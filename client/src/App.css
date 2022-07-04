@@ -71,6 +71,15 @@ select {
   width: 15%;
   margin-left: 10px;
 }
+.cartbtn {
+  width: 75px;
+  height: 75px;
+  border: none;
+  background: transparent;
+}
+.cartlogo {
+  width: 100%;
+}
 .view-home {
   height: 100vh;
 }
