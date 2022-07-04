@@ -2,6 +2,14 @@ function Cart({ cart, onAdd, onRemove }) {
   const itemsPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const totalPrice = itemsPrice + shippingPrice;
+
+  const removeItem = (item) => {
+    debugger;
+    for (let i = 0; i < item.qty; i++) {
+      onRemove(item);
+    }
+  };
+
   return (
     <>
       <h1>CART COMPONENT</h1>
@@ -9,9 +17,13 @@ function Cart({ cart, onAdd, onRemove }) {
       {cart.map((ele, i) => {
         return (
           <div key={i}>
-            <p>{ele.name}</p>
-            <button onClick={() => onAdd(ele)}>ADD</button>
-            <button onClick={() => onRemove(ele)}>REMOVE</button>
+            <p>
+              {ele.name}
+              <button onClick={() => removeItem(ele)}>x</button>
+            </p>
+
+            <button onClick={() => onAdd(ele)}>+</button>
+            <button onClick={() => onRemove(ele)}>-</button>
             <p>
               {ele.qty} x {ele.price}€
             </p>

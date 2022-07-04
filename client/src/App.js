@@ -80,6 +80,7 @@ function App() {
     }
   };
   const onRemove = (product) => {
+    debugger;
     const exist = cart.find((ele) => ele._id === product._id);
     if (exist.qty === 1) {
       setCart(cart.filter((ele) => ele._id !== product._id));

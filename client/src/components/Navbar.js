@@ -21,11 +21,13 @@ function Navbar({
 }) {
   const [openLogin, setOpenLogin] = useState(false);
 
-  const showCart = () => {
-    if (document.getElementById("cartPopup").style.display == "block") {
-      document.getElementById("cartPopup").style.display = "none";
+  const showCart = (e) => {
+    const isCart = document.getElementById("cartPopup");
+
+    if (isCart.style.display == "block") {
+      isCart.style.display = "none";
     } else {
-      document.getElementById("cartPopup").style.display = "block";
+      isCart.style.display = "block";
     }
   };
   const AllProducts = async () => {
