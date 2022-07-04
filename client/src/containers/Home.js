@@ -14,7 +14,7 @@ function Home({ allProd, setAllProd, toDisplay, setToDisplay, onAdd }) {
         <BackgroundSlider
           images={[carousel1, carousel2, carousel3, carousel4, carousel5]}
           duration={6}
-          transition={2}
+          transition={1}
         />
       </div>
       <div className="view-home">
