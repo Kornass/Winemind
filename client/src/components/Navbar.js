@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Search from "./Search";
 import axios from "axios";
 import { URL } from "../config";
+import logo from "../images/logo.png";
 
 function Navbar({
   login,
@@ -51,9 +52,11 @@ function Navbar({
   return (
     <div className="nav">
       <Link to="/" onClick={AllProducts}>
-        <h4 className="logo">Winemind</h4>
+        <img className="logo" src={logo} style={{ width: "25%" }} />
+
+        {/* <h4 className="logo">Winemind</h4>
         <p className="logo1">Share your wine</p>
-        <p className="logo1">Buy your bottles</p>
+        <p className="logo1">Buy your bottles</p> */}
       </Link>
       <Search allProd={allProd} onAdd={onAdd} />
 

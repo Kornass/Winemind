@@ -16,6 +16,7 @@ import UserAccount from "./containers/UserAccount";
 import SingleProduct from "./containers/SingleProduct";
 import ProviderPage from "./containers/ProviderPage";
 import * as jose from "jose";
+import Checkout from "./containers/Checkout";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -176,6 +177,7 @@ function App() {
           />
           {/* based on provider id we display component with information about provider */}
           <Route path="/provider/:id" element={<ProviderPage />} />
+          <Route path="/checkout" element={<Checkout cart={cart} />} />
         </Routes>
       </Router>
     </div>
