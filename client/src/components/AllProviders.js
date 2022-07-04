@@ -25,6 +25,8 @@ function AllProviders() {
       .post(url, {
         toChangeUser: provider._id,
         active: change,
+        name: provider.name,
+        eMail: provider.eMail,
       })
       .then((res) => {
         console.log(res.data);

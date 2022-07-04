@@ -54,7 +54,7 @@ function Navbar({
   return (
     <div className="nav">
       <Link to="/" onClick={AllProducts}>
-        <img className="logo" src={logo} style={{ width: "25%" }} />
+        <img className="logo" src={logo} />
 
         {/* <h4 className="logo">Winemind</h4>
         <p className="logo1">Share your wine</p>

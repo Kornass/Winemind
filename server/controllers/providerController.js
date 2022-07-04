@@ -1,17 +1,32 @@
 const Admin = require("../models/adminSchema");
 const Provider = require("../models/providersSchema");
 const Product = require("../models/productsSchema");
-
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
 require("dotenv").config({ path: "./.env" });
 const jwt_secret = process.env.JWT_SECRET;
+const nodemailer = require("nodemailer");
+const transport = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: process.env.NODEMAILER_EMAIL,
+    pass: process.env.NODEMAILER_PASSWORD,
+  },
+});
 
 class ProviderController {
   // Register account
   async userRegister(req, res) {
     let { name, password, eMail, companyName, image, admin } = req.body;
-
+    const default_subject = `New provider ${name} register`;
+    const message = `Hello ${name}!! You signed up succesfully. Now your account is waiting for activation. You will get a confirmation e-mail when your account is going to be active. We looking forward to cooperate with you!`;
+    const mailOptions = {
+      // to: field is the destination for this outgoing email, your admin email for example
+      to: `${eMail}`,
+      bcc: process.env.DESTINATION_EMAIL,
+      subject: default_subject,
+      html: "<p>" + default_subject + "</p><p><pre>" + message + "</pre></p>",
+    };
     try {
       const user = await Provider.findOne({ name });
       if (user) return res.send({ ok: false, message: "User already exist!" });
@@ -33,6 +48,7 @@ class ProviderController {
         active: false,
         admin,
       });
+      await transport.sendMail(mailOptions);
       res.send({ ok: true, message: "User successfully registered!" });
     } catch (e) {
       res.send({ ok: false, e });
