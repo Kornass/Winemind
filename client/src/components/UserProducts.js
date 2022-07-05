@@ -51,7 +51,7 @@ function UserProducts({ user }) {
             <p>
               {item.name}, {item.vintage}, {item.producer}
             </p>
-            <p>{item.price}</p>
+            <p>{item.price}€</p>
           </div>
         ))}
     </div>

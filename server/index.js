@@ -6,6 +6,8 @@ const express = require("express"),
 const productsRoutes = require("./routes/productRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const providersRoutes = require("./routes/providerRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+
 const cors = require("cors");
 
 // to print incoming requests from mongoose in the terminal
@@ -58,7 +60,7 @@ app.use(adminJS.options.rootPath, router);
 app.use("/product", productsRoutes);
 app.use("/user", providersRoutes);
 app.use("/admin", adminRoutes);
-
+app.use("/payment", paymentRoutes);
 
 // Set the server to listen on port 3000
 app.listen(port, () => console.log(`listening on port ${port}`));

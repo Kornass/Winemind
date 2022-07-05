@@ -16,7 +16,9 @@ import UserAccount from "./containers/UserAccount";
 import SingleProduct from "./containers/SingleProduct";
 import ProviderPage from "./containers/ProviderPage";
 import * as jose from "jose";
-import Checkout from "./containers/Checkout";
+import Stripe from "./components/stripe";
+import PaymentSuccess from "./containers/paymentSuccess";
+import PaymentError from "./containers/paymentError";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -177,7 +179,7 @@ function App() {
           />
           {/* based on provider id we display component with information about provider */}
           <Route path="/provider/:id" element={<ProviderPage />} />
-          <Route path="/checkout" element={<Checkout cart={cart} />} />
+          <Route path="/checkout" element={<Stripe cart={cart} />} />
           <Route path="/payment/success" element={<PaymentSuccess />} />
           <Route path="/payment/error" element={<PaymentError />} />
         </Routes>

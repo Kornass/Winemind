@@ -1,25 +1,32 @@
 import { useState } from "react";
 import { URL } from "../config";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Checkout({ cart }) {
-  const [products, setProducts] = useState([]);
+function Checkout(props) {
+  // const [products, setProducts] = useState([]);
+  const stripe = useStripe();
 
-  const getStripe = () => {
-    return cart.map((ele) => {
-      return setProducts(...products, {
-        name: ele.name,
-        images: ele.img,
-        quantity: ele.qty,
-      });
-    });
-  };
+  // const getStripe = () => {
+  //   return setProducts();
+  // };
+
+  const navigate = useNavigate();
 
   const createCheckoutSession = async () => {
+    let products = props.cart.map((ele) => ({
+      name: ele.name,
+      images: [ele.img],
+      quantity: ele.qty,
+      amount: ele.price,
+    }));
     try {
       const response = await axios.post(
         `${URL}/payment/create-checkout-session`,
         { products }
       );
+      debugger;
       return response.data.ok
         ? (localStorage.setItem(
             "sessionId",
@@ -31,20 +38,27 @@ function Checkout({ cart }) {
       navigate("/payment/error");
     }
   };
+  const redirect = (sessionId) => {
+    debugger;
+    stripe
+      .redirectToCheckout({
+        sessionId: sessionId,
+      })
+      .then(function (result) {});
+  };
 
   const changeQuantity = (e) => {
     console.log(e);
   };
   const calculate_total = () => {
     let total = 0;
-    cart.forEach((ele) => (total += ele.qty * ele.price));
+    props.cart.forEach((ele) => (total += ele.qty * ele.price));
     return total;
   };
-
   return (
     <div className="container">
       <h3>Checkout</h3>
-      {cart.map((e, i) => {
+      {props.cart.map((e, i) => {
         return (
           <div className="checkout-item" key={i}>
             <img src={e.img} />
@@ -70,7 +84,7 @@ function Checkout({ cart }) {
       <div className="payment">
         <button
           onClick={() => {
-            getStripe();
+            // getStripe();
             createCheckoutSession();
           }}
         >

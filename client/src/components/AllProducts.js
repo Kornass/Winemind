@@ -12,7 +12,7 @@ function AllProducts({ toDisplay, onAdd, allProd }) {
                 <p>
                   {item.name}, {item.vintage}, {item.producer}
                 </p>
-                <p>{item.price}</p>
+                <p>{item.price}€</p>
               </Link>
               <button onClick={() => onAdd(item)}>Add to cart</button>
             </div>

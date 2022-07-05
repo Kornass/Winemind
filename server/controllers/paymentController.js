@@ -25,17 +25,13 @@ const create_checkout_session = async (req, res) => {
   }
 };
 
-// 14. Controller triggers by the incoming req with session id
 const checkout_session = async (req, res) => {
   try {
     const { sessionId } = req.query;
-    // 15. We execute request to Stripe to get data for the specific session ID
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ["line_items"],
     });
-    // 16. From the session received above we get customer info
     const customer = await stripe.customers.retrieve(session.customer);
-    // 17. And sending both session and customer to the client
     return res.send({ ok: true, session, customer });
   } catch (error) {
     console.log("ERROR =====>", error);
