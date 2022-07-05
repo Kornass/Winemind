@@ -28,8 +28,6 @@ function App() {
     JSON.parse(localStorage.getItem("cartstate")) || []
   );
   const [allProd, setAllProd] = useState([]);
-  // const [toDisplay, setToDisplay] = useState([]);
-
   // fetch all prods
   const AllProducts = async () => {
     // debugger;

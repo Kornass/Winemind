@@ -1,4 +1,12 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const nodemailer = require("nodemailer");
+const transport = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: process.env.NODEMAILER_EMAIL,
+    pass: process.env.NODEMAILER_PASSWORD,
+  },
+});
 
 const create_checkout_session = async (req, res) => {
   try {
@@ -32,6 +40,30 @@ const checkout_session = async (req, res) => {
       expand: ["line_items"],
     });
     const customer = await stripe.customers.retrieve(session.customer);
+    //Purchase Mail
+    const arr = [];
+    session.line_items.data.map((ele) => {
+      return arr.push([ele.quantity, ele.description, ele.amount_total / 100]);
+    });
+    console.log(arr);
+    const default_subject = `Thank you for your purchase, ${customer.name}`;
+    const message = `Hello ${
+      customer.name
+    }!! You payment was successful and is being processed. We will send it to ${
+      customer.address.city
+    }, ${customer.address.line1}. Your purchase was ${
+      session.amount_total / 100
+    }€ and contains ${arr.map((ele) => [
+      `x${ele[0]} of ${ele[1]} for ${ele[2]}€ each`,
+    ])}. Thank you for purchasing.`;
+    const mailOptions = {
+      to: `${customer.email}`,
+      // bcc: process.env.DESTINATION_EMAIL,
+      subject: default_subject,
+      html: "<p>" + default_subject + "</p><p><pre>" + message + "</pre></p>",
+    };
+    await transport.sendMail(mailOptions);
+
     return res.send({ ok: true, session, customer });
   } catch (error) {
     console.log("ERROR =====>", error);

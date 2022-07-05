@@ -5,13 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Checkout(props) {
-  // const [products, setProducts] = useState([]);
   const stripe = useStripe();
-
-  // const getStripe = () => {
-  //   return setProducts();
-  // };
-
   const navigate = useNavigate();
 
   const createCheckoutSession = async () => {
@@ -26,7 +20,6 @@ function Checkout(props) {
         `${URL}/payment/create-checkout-session`,
         { products }
       );
-      debugger;
       return response.data.ok
         ? (localStorage.setItem(
             "sessionId",
@@ -39,7 +32,6 @@ function Checkout(props) {
     }
   };
   const redirect = (sessionId) => {
-    debugger;
     stripe
       .redirectToCheckout({
         sessionId: sessionId,
@@ -82,14 +74,7 @@ function Checkout(props) {
       })}
       <p style={{ fontWeight: "bold" }}>Total: {calculate_total()} €</p>
       <div className="payment">
-        <button
-          onClick={() => {
-            // getStripe();
-            createCheckoutSession();
-          }}
-        >
-          Go to payment
-        </button>
+        <button onClick={() => createCheckoutSession()}>Go to payment </button>
       </div>
     </div>
   );
