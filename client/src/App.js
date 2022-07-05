@@ -178,6 +178,8 @@ function App() {
           {/* based on provider id we display component with information about provider */}
           <Route path="/provider/:id" element={<ProviderPage />} />
           <Route path="/checkout" element={<Checkout cart={cart} />} />
+          <Route path="/payment/success" element={<PaymentSuccess />} />
+          <Route path="/payment/error" element={<PaymentError />} />
         </Routes>
       </Router>
     </div>

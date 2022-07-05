@@ -1,6 +1,37 @@
 import { useState } from "react";
+import { URL } from "../config";
 
 function Checkout({ cart }) {
+  const [products, setProducts] = useState([]);
+
+  const getStripe = () => {
+    return cart.map((ele) => {
+      return setProducts(...products, {
+        name: ele.name,
+        images: ele.img,
+        quantity: ele.qty,
+      });
+    });
+  };
+
+  const createCheckoutSession = async () => {
+    try {
+      const response = await axios.post(
+        `${URL}/payment/create-checkout-session`,
+        { products }
+      );
+      return response.data.ok
+        ? (localStorage.setItem(
+            "sessionId",
+            JSON.stringify(response.data.sessionId)
+          ),
+          redirect(response.data.sessionId))
+        : navigate("/payment/error");
+    } catch (error) {
+      navigate("/payment/error");
+    }
+  };
+
   const changeQuantity = (e) => {
     console.log(e);
   };
@@ -37,7 +68,14 @@ function Checkout({ cart }) {
       })}
       <p style={{ fontWeight: "bold" }}>Total: {calculate_total()} €</p>
       <div className="payment">
-        <button>Go to payment</button>
+        <button
+          onClick={() => {
+            getStripe();
+            createCheckoutSession();
+          }}
+        >
+          Go to payment
+        </button>
       </div>
     </div>
   );
