@@ -78,7 +78,9 @@ function AllProviders() {
                     </td>
                   </tr>
                   <tr key={provider._id}>
-                    <UserProducts user={provider} />
+                    <td colspan="100%" >
+                      <UserProducts user={provider} />
+                    </td>
                   </tr>
                 </>
               );

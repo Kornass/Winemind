@@ -2,7 +2,7 @@ import cartimg from "../images/Cart.png";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import Cart from "../containers/Cart";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import axios from "axios";
@@ -53,6 +53,25 @@ function Navbar({
   // }, []);
   return (
     <div className="nav">
+      <div className="left-nav">
+        {isLoggedIn ? (
+          <>
+            <Link to="/myAccount">
+              <button className="nav-button">My Account</button>
+            </Link>
+            <button className="nav-button" onClick={logout}>
+              LogOut
+            </button>
+          </>
+        ) : (
+          <div className="nav-btns">
+            <p>I'm a provider!</p>
+            <SignUp setOpenLogin={setOpenLogin} />
+            <LogIn open={openLogin} login={login} />
+          </div>
+        )}
+        <Search allProd={allProd} onAdd={onAdd} />
+      </div>
       <Link to="/" onClick={AllProducts}>
         <img className="logo" src={logo} />
 
@@ -60,24 +79,7 @@ function Navbar({
         <p className="logo1">Share your wine</p>
         <p className="logo1">Buy your bottles</p> */}
       </Link>
-      <Search allProd={allProd} onAdd={onAdd} />
 
-      {isLoggedIn ? (
-        <>
-          <Link to="/myAccount">
-            <button className="nav-button">My Account</button>
-          </Link>
-          <button className="nav-button" onClick={logout}>
-            LogOut
-          </button>
-        </>
-      ) : (
-        <div className="nav-btns">
-          <p>I'm a provider!</p>
-          <SignUp setOpenLogin={setOpenLogin} />
-          <LogIn open={openLogin} login={login} />
-        </div>
-      )}
       <div id="cartPopup" className="cartPopup">
         <Cart
           cart={cart}
@@ -87,11 +89,10 @@ function Navbar({
           showCart={showCart}
         />
       </div>
- 
-        <button className="cartbtn" onClick={showCart}>
-          <img className="cartlogo" src={cartimg} alt="cart" />
-        </button>
-     
+
+      <button className="cartbtn" onClick={showCart}>
+        <img className="cartlogo" src={cartimg} alt="cart" />
+      </button>
     </div>
   );
 }

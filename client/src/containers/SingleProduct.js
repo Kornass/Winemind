@@ -13,7 +13,7 @@ function SingleProduct({ allProd, onAdd }) {
   }, [allProd]);
 
   return (
-    <div className="singleProdDiv">
+    <div className="singleProdDiv container">
       <h1>{product.name}</h1>
       <img
         className="singleImg"
