@@ -1,18 +1,17 @@
 import Filtering from "../components/Filtering";
 import AllProducts from "../components/AllProducts";
 import BackgroundSlider from "react-background-slider";
-import carousel1 from "../images/carousel1.jpg";
-import carousel2 from "../images/carousel2.jpg";
-import carousel3 from "../images/carousel3.jpg";
-import carousel4 from "../images/carousel4.jpg";
-import carousel5 from "../images/carousel5.jpg";
+import slider1 from "../images/slider1.jpg";
+import slider2 from "../images/slider2.jpg";
+import slider3 from "../images/slider3.jpg";
+import slider4 from "../images/slider4.jpg";
 
 function Home({ allProd, setAllProd, toDisplay, setToDisplay, onAdd }) {
   return (
     <>
       <div className="view-viewport">
         <BackgroundSlider
-          images={[carousel1, carousel2, carousel3, carousel4, carousel5]}
+          images={[slider1, slider2, slider3, slider4]}
           duration={6}
           transition={1}
         />

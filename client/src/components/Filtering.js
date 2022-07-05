@@ -123,7 +123,12 @@ function Filtering({ allProd, setToDisplay, setAllProd }) {
             ))}
         </select>
       </div>
-      <input value="clear" type="reset" onClick={AllProducts} />
+      <input
+        className="clear"
+        value="clear"
+        type="reset"
+        onClick={AllProducts}
+      />
     </form>
   );
 }

@@ -7,14 +7,22 @@ function AllProducts({ toDisplay, onAdd, allProd }) {
         {allProd &&
           allProd.map((item, i) => (
             <div className="product" key={i}>
-              <Link to={`/single/${item.sku}`} key={item._id}>
+              <Link
+                to={`/single/${item.sku}`}
+                key={item._id}
+                className="product-link"
+              >
                 <img src={item.img} alt={`${item.name} bottle`} />
-                <p>
-                  {item.name}, {item.vintage}, {item.producer}
-                </p>
-                <p>{item.price}€</p>
+                <div className="info">
+                  <p className="desc">
+                    {item.name},{item.vintage},{item.producer}
+                  </p>
+                  <p>{item.price}€</p>
+                </div>
               </Link>
-              <button onClick={() => onAdd(item)}>Add to cart</button>
+              <button className="add-to-cart" onClick={() => onAdd(item)}>
+                Add to cart
+              </button>
             </div>
           ))}
       </>

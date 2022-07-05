@@ -65,12 +65,11 @@ function Navbar({
           </>
         ) : (
           <div className="nav-btns">
-            <p>I'm a provider!</p>
-            <SignUp setOpenLogin={setOpenLogin} />
+            <p>Are you a wine seller?</p>
             <LogIn open={openLogin} login={login} />
+            <SignUp setOpenLogin={setOpenLogin} />
           </div>
         )}
-        <Search allProd={allProd} onAdd={onAdd} />
       </div>
       <Link to="/" onClick={AllProducts}>
         <img className="logo" src={logo} />
@@ -89,10 +88,12 @@ function Navbar({
           showCart={showCart}
         />
       </div>
-
-      <button className="cartbtn" onClick={showCart}>
-        <img className="cartlogo" src={cartimg} alt="cart" />
-      </button>
+      <div className="nav-right">
+        <Search allProd={allProd} onAdd={onAdd} />
+        <button className="cartbtn" onClick={showCart}>
+          <img className="cartlogo" src={cartimg} alt="cart" />
+        </button>
+      </div>
     </div>
   );
 }
