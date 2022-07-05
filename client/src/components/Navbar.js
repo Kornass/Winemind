@@ -87,9 +87,11 @@ function Navbar({
           showCart={showCart}
         />
       </div>
-      <button className="cartbtn" onClick={showCart}>
-        <img className="cartlogo" src={cartimg} alt="cart" />
-      </button>
+ 
+        <button className="cartbtn" onClick={showCart}>
+          <img className="cartlogo" src={cartimg} alt="cart" />
+        </button>
+     
     </div>
   );
 }

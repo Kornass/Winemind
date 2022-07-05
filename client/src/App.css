@@ -68,8 +68,9 @@ select {
   opacity: 1;
 }
 .logo {
-  width: 15%;
-  margin-left: 10px;
+  width: 125px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 .cartbtn {
   width: 75px;
