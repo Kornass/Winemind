@@ -4,13 +4,13 @@ import ProviderDetails from "../components/ProviderDetails";
 
 function UserDashBoard({ user, setUser }) {
   return (
-    <>
+    <div className="container">
       <ProviderDetails user={user} setUser={setUser} />
       <AddProduct user={user} />
 
       <h2>Your products</h2>
       <UserProducts user={user} />
-    </>
+    </div>
   );
 }
 export default UserDashBoard;
