@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
   const itemsPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
@@ -52,9 +53,7 @@ function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
           </div>
           <hr />
           <div className="row">
-            <button onClick={() => alert("Implement Checkout!")}>
-              Checkout
-            </button>
+            <button>Checkout</button>
           </div>
         </>
       )}
