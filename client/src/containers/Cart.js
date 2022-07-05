@@ -53,7 +53,9 @@ function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
           </div>
           <hr />
           <div className="row">
-            <button>Checkout</button>
+            <Link to="/checkout">
+              <button>Checkout</button>
+            </Link>
           </div>
         </>
       )}

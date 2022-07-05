@@ -1,4 +1,4 @@
-import cartimg from "../images/cart.svg";
+import cartimg from "../images/Cart.png";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import Cart from "../containers/Cart";
@@ -87,9 +87,11 @@ function Navbar({
           showCart={showCart}
         />
       </div>
-      <button onClick={showCart}>
-        <img src={cartimg} alt="cart" />
-      </button>
+ 
+        <button className="cartbtn" onClick={showCart}>
+          <img className="cartlogo" src={cartimg} alt="cart" />
+        </button>
+     
     </div>
   );
 }
