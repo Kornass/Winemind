@@ -8,6 +8,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
+// import "./cart.css";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home";
 import Cart from "./containers/Cart";
@@ -181,6 +183,7 @@ function App() {
           <Route path="/payment/success" element={<PaymentSuccess />} />
           <Route path="/payment/error" element={<PaymentError />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

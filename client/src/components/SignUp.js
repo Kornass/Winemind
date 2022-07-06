@@ -29,7 +29,6 @@ function SignUp({ setOpenLogin }) {
   // OnSubmit adding provider function
   const add = async (e) => {
     e.preventDefault();
-
     if (password1 !== password2) {
       return setMsg("Password is not confirmed");
     } else if (password1.length < 8) {
