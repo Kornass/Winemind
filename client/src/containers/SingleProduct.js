@@ -13,22 +13,26 @@ function SingleProduct({ allProd, onAdd }) {
   }, [allProd]);
 
   return (
-    <div className="singleProdDiv container">
-      <h1>{product.name}</h1>
-      <img
-        className="singleImg"
-        src={product.img}
-        alt={`${product.name} bottle`}
-      />
-      <p>{product.type} wine</p>
-      <p>Year: {product.vintage}</p>
-      <p>Grape: {product.grape}</p>
-      <p>Producer: {product.producer}</p>
-      <p>Country: {product.country}</p>
-      <p>Region: {product.region}</p>
-      <p>{product.description}</p>
-      <h1>{product.price}€</h1>
-      <button onClick={() => onAdd(product)}>Add to cart</button>
+    <div className="singleProdDiv">
+      <div className="imagediv">
+        <img
+          className="singleImg"
+          src={product.img}
+          alt={`${product.name} bottle`}
+        />
+      </div>
+      <div className="descriptionDiv">
+        <h1>{product.name}</h1>
+        <p>{product.type} wine</p>
+        <p>Year: {product.vintage}</p>
+        <p>Grape: {product.grape}</p>
+        <p>Producer: {product.producer}</p>
+        <p>Country: {product.country}</p>
+        <p>Region: {product.region}</p>
+        <p>{product.description}</p>
+        <h1>{product.price}€</h1>
+        <button onClick={() => onAdd(product)}>Add to cart</button>
+      </div>
     </div>
   );
 }

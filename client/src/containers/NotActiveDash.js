@@ -1,5 +1,5 @@
 function NotActiveDash() {
-  return <div>NotActiveDash</div>;
+  return <div className="pending">Your account is pending for activation</div>;
 }
 
 export default NotActiveDash;

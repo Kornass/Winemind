@@ -164,6 +164,7 @@ function AddProduct({ user }) {
           />
           <label>Description</label>
           <textarea
+            className="textarea"
             onChange={(e) =>
               setProduct({ ...product, description: e.target.value })
             }
