@@ -180,8 +180,14 @@ function App() {
           />
           {/* based on provider id we display component with information about provider */}
           <Route path="/provider/:id" element={<ProviderPage />} />
-          <Route path="/checkout" element={<Stripe cart={cart} />} />
-          <Route path="/payment/success" element={<PaymentSuccess />} />
+          <Route
+            path="/checkout"
+            element={<Stripe cart={cart} onAdd={onAdd} onRemove={onRemove} />}
+          />
+          <Route
+            path="/payment/success"
+            element={<PaymentSuccess setCart={setCart} />}
+          />
           <Route path="/payment/error" element={<PaymentError />} />
         </Routes>
         <Footer />

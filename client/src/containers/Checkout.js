@@ -39,9 +39,6 @@ function Checkout(props) {
       .then(function (result) {});
   };
 
-  const changeQuantity = (e) => {
-    console.log(e);
-  };
   const calculate_total = () => {
     let total = 0;
     props.cart.forEach((ele) => (total += ele.qty * ele.price));
@@ -56,14 +53,8 @@ function Checkout(props) {
             <img src={e.img} />
             <p>Name:{e.name}</p>
             <p>Type:{e.type}</p>
-
-            <input
-              className="quan"
-              min={0}
-              type="Number"
-              defaultValue={e.qty}
-              onChange={() => changeQuantity()}
-            />
+            <button onClick={() => props.onAdd(e)}>+</button>
+            <button onClick={() => props.onRemove(e)}>-</button>
 
             <p>Price:{e.price}</p>
             <p>Total:{e.price * e.qty}</p>

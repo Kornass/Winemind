@@ -7,7 +7,6 @@ const transport = nodemailer.createTransport({
     pass: process.env.NODEMAILER_PASSWORD,
   },
 });
-
 const create_checkout_session = async (req, res) => {
   try {
     const { products } = req.body;

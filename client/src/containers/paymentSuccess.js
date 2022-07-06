@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const PaymentSuccess = ({ setCart }) => {
   const [info, setInfo] = useState({});
 
+  setCart([]);
+
   useEffect(() => {
     const getSessionData = async () => {
       try {
