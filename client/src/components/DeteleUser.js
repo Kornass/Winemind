@@ -3,7 +3,6 @@ import axios from "axios";
 
 function DeleteUser({ provider }) {
   const deleteUser = () => {
-    console.log(provider);
     let url = `${URL}/user/delete`;
     axios.post(url, {
       _id: provider._id,

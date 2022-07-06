@@ -72,7 +72,9 @@ function LogIn({ open, login }) {
 
             <input type="submit" value="submit" className="submit" />
           </form>
-          <div className="msg-login"></div>
+          <div className="msg-login" style={{ color: "red" }}>
+            {message}
+          </div>
         </div>
       </Modal>
     </>

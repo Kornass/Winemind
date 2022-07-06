@@ -78,7 +78,7 @@ function AllProviders() {
                     </td>
                   </tr>
                   <tr key={provider._id} className="admin-products">
-                    <td colspan="100%">
+                    <td colSpan="100%">
                       <UserProducts user={provider} />
                     </td>
                   </tr>

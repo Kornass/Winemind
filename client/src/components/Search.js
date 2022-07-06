@@ -18,14 +18,12 @@ function Search({ allProd, onAdd }) {
   };
   const renderSearch = () => {
     const filteredList = allProd.filter((ele) => {
-      return (
-        ele.name.toUpperCase().includes(list.toUpperCase()) ||
-        ele.type.toUpperCase().includes(list.toUpperCase()) ||
-        ele.grape.toUpperCase().includes(list.toUpperCase()) ||
-        ele.country.toUpperCase().includes(list.toUpperCase()) ||
-        ele.producer.toUpperCase().includes(list.toUpperCase()) ||
-        ele.region.toUpperCase().includes(list.toUpperCase())
-      );
+      return ele.name.toUpperCase().includes(list.toUpperCase());
+      // ele.type.toUpperCase().includes(list.toUpperCase()) ||
+      // ele.grape.toUpperCase().includes(list.toUpperCase()) ||
+      // ele.country.toUpperCase().includes(list.toUpperCase()) ||
+      // ele.producer.toUpperCase().includes(list.toUpperCase()) ||
+      // ele.region.toUpperCase().includes(list.toUpperCase())
     });
     if (filteredList.length > 0) {
       return filteredList.map((ele, idx) => {
@@ -39,18 +37,14 @@ function Search({ allProd, onAdd }) {
                 handleSearch();
               }}
             >
-              <div className="searchStuff">
-                <img className="searchImg" src={ele.img} />
-                <p className="searchTitle">{ele.name}</p>
-                <p className="searchTitle">{ele.price}€</p>
-              </div>
+              <p className="search-result">{ele.name}</p>
             </Link>
-            <button onClick={() => onAdd(ele)}>Add to cart</button>
+            <span>{ele.price}€</span>
           </div>
         );
       });
     } else {
-      return <h2>No products match this search</h2>;
+      return <p>No products match this search</p>;
     }
   };
   return (
