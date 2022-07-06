@@ -47,22 +47,23 @@ function App() {
     AllProducts();
   }, []);
 
-  useEffect(() => {
-    const verify_token = async () => {
-      try {
-        if (!token) {
-          setToken(JSON.parse(localStorage.getItem("token")));
-          setIsLoggedIn(false);
-        }
-        axios.defaults.headers.common["Authorization"] = token;
-        const response = await axios.post(`${URL}/user/verify_token`);
-        return response.data.ok ? login(token) : logout();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    verify_token();
-  }, [token]);
+  // useEffect(() => {
+  //   const verify_token = async () => {
+  //     try {
+  //       if (!token) {
+  //         setToken(JSON.parse(localStorage.getItem("token")));
+  //         setIsLoggedIn(false);
+  //       }
+  //       axios.defaults.headers.common["Authorization"] = token;
+  //       const response = await axios.post(`${URL}/user/verify_token`);
+
+  //       return response.data.ok ? login(token) : logout();
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   verify_token();
+  // // }, [token]);
 
   // cart functions
 
