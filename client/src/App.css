@@ -10,13 +10,16 @@ body {
 
 /* Add product form first template */
 .addform {
-  width: 70%;
-  text-align: center;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+form,
 form input,
-form select {
-  width: 170px;
+form select,
+form textarea {
+  width: 250px;
   text-align: center;
   background: transparent;
   border-radius: 10px;
@@ -493,7 +496,7 @@ button {
 .container {
   position: relative;
   top: 150px;
-  bottom: 100px;
+  margin-bottom: 200px;
 }
 /* ==================================================  */
 /* FOOTER  */
