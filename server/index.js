@@ -1,6 +1,7 @@
 const express = require("express"),
   app = express(),
   mongoose = require("mongoose");
+const path = require("path");
 
 // Routes here:
 const productsRoutes = require("./routes/productRoutes");
@@ -62,5 +63,12 @@ app.use("/user", providersRoutes);
 app.use("/admin", adminRoutes);
 app.use("/payment", paymentRoutes);
 
+// Digital ocean setup
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 // Set the server to listen on port 3000
 app.listen(port, () => console.log(`listening on port ${port}`));
