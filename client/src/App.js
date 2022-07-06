@@ -24,7 +24,7 @@ import PaymentError from "./containers/paymentError";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
   const [user, setUser] = useState({});
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cartstate")) || []
@@ -47,23 +47,23 @@ function App() {
     AllProducts();
   }, []);
 
-  // useEffect(() => {
-  //   const verify_token = async () => {
-  //     try {
-  //       if (!token) {
-  //         setToken(JSON.parse(localStorage.getItem("token")));
-  //         setIsLoggedIn(false);
-  //       }
-  //       axios.defaults.headers.common["Authorization"] = token;
-  //       const response = await axios.post(`${URL}/user/verify_token`);
-
-  //       return response.data.ok ? login(token) : logout();
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   verify_token();
-  // // }, [token]);
+  useEffect(() => {
+    const verify_token = async () => {
+      try {
+        if (!token) {
+          // setToken(JSON.parse(localStorage.getItem("token")));
+          setIsLoggedIn(false);
+        } else {
+          axios.defaults.headers.common["Authorization"] = token;
+          const response = await axios.post(`${URL}/user/verify_token`);
+          return response.data.ok ? login(token) : logout();
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    verify_token();
+  }, [token]);
 
   // cart functions
 
