@@ -69,20 +69,22 @@ form input:focus {
   border-radius: 10px;
   color: black;
   cursor: pointer;
-  width: 130px;
+  width: 120px;
   height: 40px;
   /* padding: 8px; */
   margin: 0 5px;
 }
 .nav-btns {
-  display: flex;
+  /* display: flex; */
   padding-left: 20px;
   text-align: center;
+}
+.nav-btns p {
+  padding-bottom: 7px;
 }
 .create {
   background-color: black;
   color: white;
-  width: 250px;
 }
 .searchbar {
   color: black;
@@ -188,7 +190,7 @@ form input:focus {
 /* ================================================================================= */
 /* Below slider  */
 .view-home {
-  height: 100vh;
+  /* height: 100vh; */
   width: 95%;
   margin: auto;
 }
@@ -206,6 +208,7 @@ button {
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-around;
   align-items: center;
+  row-gap: 2em;
 }
 .product img {
   width: 80px;
@@ -337,7 +340,7 @@ button {
   padding: 10px 0;
 }
 .cart-item {
-  padding-top: 10px;
+  padding: 10px 0;
   display: flex;
 }
 .cart-item p {
@@ -345,17 +348,14 @@ button {
 }
 .cart-item button:nth-child(3) {
   text-align: end;
-  width: 17.5%;
+  width: 20%;
   right: 0;
 }
 .cart-item button:nth-child(1),
 .cart-item button:nth-child(2) {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
   background-color: transparent;
-  border: 0.5px solid rgb(131, 131, 131);
-  margin-right: 5px;
+  border: none;
+  /* margin-right: 5px; */
 }
 .cart-item button:nth-child(1):active,
 .cart-item button:nth-child(2):active {
@@ -412,7 +412,7 @@ button {
   background-color: black;
   color: white;
 }
-
+/* ================================================================================= */
 /* Filtering */
 .filter-container {
   position: sticky;
@@ -423,7 +423,6 @@ button {
   border-radius: 8px;
   display: flex;
   background-color: rgba(255, 255, 255, 0.75);
-
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -443,6 +442,14 @@ button {
   width: 8%;
   background-color: black;
   color: white;
+}
+.filter-container > div {
+  width: 12%;
+  margin: 0 5px;
+  border: none;
+}
+.filter-container > div > select {
+  width: 100%;
 }
 /* ================================================================================= */
 /* SEARCH  */
@@ -474,28 +481,28 @@ button {
   height: 100px;
 }
 /* ================================================================================= */
-/* filtering */
-.filter-container > div {
-  width: 12%;
-  margin: 0 5px;
-  border: none;
-}
-.filter-container > div > select {
-  width: 100%;
-}
-/* ================================================================================= */
 /* checkout */
+.checkout-item img {
+  width: 8%;
+  padding-left: 20px;
+}
+.checkout-item div {
+  border-left-style: solid;
+  border-width: 1px;
+  width: 50%;
+  padding-left: 2%;
+}
+.checkout-item > div > button {
+  margin: 5px 0;
+}
 .checkout-item {
+  display: flex;
+  justify-content: space-between;
   padding: 10px 5px;
   border-top: 1px solid #f1efe4;
   border-bottom: 1px solid #f1efe4;
 }
-.quan {
-  width: 45px;
-}
 .checkout-remove {
-  /* position: absolute; */
-  /* position: relative; */
   left: 10px;
   top: 10px;
 }
@@ -514,6 +521,7 @@ button {
   height: 100%;
   padding: 10px;
 }
+
 /* ================================================================================= */
 /* Puts body below the navbar */
 .container {
@@ -524,11 +532,12 @@ button {
 /* ==================================================  */
 /* FOOTER  */
 .footer {
-  height: 10vh;
+  height: 90px;
   background-color: black;
   text-align: center;
   color: white;
   font-family: "Major Mono Display", monospace;
+  margin-top: 20px;
 }
 .footer > * {
   padding-top: 10px;
@@ -598,4 +607,7 @@ button {
   width: 90px;
   height: 30px;
   background-color: maroon;
+}
+.bold {
+  font-weight: bold;
 }

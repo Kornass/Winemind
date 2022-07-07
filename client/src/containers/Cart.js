@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaInfo } from "react-icons/fa";
+import { FaInfo, FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 
 function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
   const itemsPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
@@ -25,8 +25,12 @@ function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
             <div className="cart-item">
               <p>{ele.name}</p>
               <div>
-                <button onClick={() => onAdd(ele)}>+</button>
-                <button onClick={() => onRemove(ele)}>-</button>
+                <button onClick={() => onAdd(ele)}>
+                  <FaPlusCircle />
+                </button>
+                <button onClick={() => onRemove(ele)}>
+                  <FaMinusCircle />
+                </button>
               </div>
               <button onClick={() => removeItem(i)}>X</button>
             </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { URL } from "../config";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 function Checkout(props) {
   const stripe = useStripe();
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const createCheckoutSession = async () => {
     let products = props.cart.map((ele) => ({
@@ -51,15 +54,30 @@ function Checkout(props) {
         return (
           <div className="checkout-item" key={i}>
             <img src={e.img} />
-            <p>Name:{e.name}</p>
-            <p>Type:{e.type}</p>
-            <button onClick={() => props.onAdd(e)}>+</button>
-            <button onClick={() => props.onRemove(e)}>-</button>
+            <div>
+              <p>
+                <span className="bold">Name: </span>
+                {e.name}
+              </p>
+              <p>
+                <span className="bold">Type: </span>
+                {e.type}
+              </p>
 
-            <p>Price:{e.price}</p>
-            <p>Total:{e.price * e.qty}</p>
+              <button onClick={() => props.onAdd(e)}>+</button>
+              <button onClick={() => props.onRemove(e)}>-</button>
 
-            <button className="checkout-remove">X</button>
+              <p>
+                <span className="bold">Price: </span>
+                {e.price}
+              </p>
+              <p>
+                <span className="bold total">Total: </span>
+                {e.price * e.qty}
+              </p>
+
+              <button className="checkout-remove">X</button>
+            </div>
           </div>
         );
       })}

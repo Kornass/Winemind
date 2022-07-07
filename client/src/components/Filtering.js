@@ -19,21 +19,6 @@ function Filtering({ allProd, setToDisplay, setAllProd }) {
   return (
     <form className="filter-container" onChange={handleFiltering}>
       <div>
-        <select name="name" defaultValue="Wine Name">
-          <option disabled hidden>
-            Wine Name
-          </option>
-          {allProd
-            .map((e, i) => e.name)
-            .filter((item, i, ar) => ar.indexOf(item) === i)
-            .map((e, i) => (
-              <option key={`name, ${i}`} value={e}>
-                {e}
-              </option>
-            ))}
-        </select>
-      </div>
-      <div>
         <select name="type" defaultValue="Wine Type">
           <option disabled hidden>
             Wine Type
