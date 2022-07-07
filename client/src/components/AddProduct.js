@@ -158,6 +158,7 @@ function AddProduct({ user }) {
           <label>Price (in euros) *</label>
           <input
             min={0}
+            step=".01"
             type="Number"
             required
             onChange={(e) => setProduct({ ...product, price: e.target.value })}
@@ -171,6 +172,7 @@ function AddProduct({ user }) {
           />
           <label>Image URL *</label>
           <input
+            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)"
             // type="file"
             required
             onChange={(e) => setProduct({ ...product, img: e.target.value })}

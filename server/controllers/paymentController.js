@@ -42,7 +42,11 @@ const checkout_session = async (req, res) => {
     //Purchase Mail
     const arr = [];
     session.line_items.data.map((ele) => {
-      return arr.push([ele.quantity, ele.description, ele.amount_total / 100]);
+      return arr.push([
+        ele.quantity,
+        ele.description,
+        ele.amount_total / ele.quantity / 100,
+      ]);
     });
     console.log(arr);
     const default_subject = `Thank you for your purchase, ${customer.name}`;
