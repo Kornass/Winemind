@@ -30,23 +30,20 @@ function App() {
     JSON.parse(localStorage.getItem("cartstate")) || []
   );
   const [allProd, setAllProd] = useState([]);
-  // fetch all prods
+  // fetching all products
   const AllProducts = async () => {
-    // debugger;
     let url = `${URL}/product/all`;
     try {
       const res = await axios.get(url);
       setAllProd(res.data);
-      // setToDisplay(res.data);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
-    // console.log("smth");
     AllProducts();
   }, []);
-
+  // Token verification
   useEffect(() => {
     const verify_token = async () => {
       try {
@@ -64,13 +61,11 @@ function App() {
     };
     verify_token();
   }, [token]);
-
   // cart functions
-
   useEffect(() => {
     localStorage.setItem("cartstate", JSON.stringify(cart));
   }, [cart]);
-
+  // Add in car quantity
   const onAdd = (product) => {
     const exist = cart.find((ele) => ele._id === product._id);
     if (exist) {
@@ -83,6 +78,7 @@ function App() {
       setCart([...cart, { ...product, qty: 1 }]);
     }
   };
+  // Decrese in cart quantity
   const onRemove = (product) => {
     const exist = cart.find((ele) => ele._id === product._id);
     if (exist.qty === 1) {
@@ -96,6 +92,7 @@ function App() {
     }
   };
   // end of cart function
+  // Get current user
   const loggedInfo = async (id) => {
     let url = `${URL}/user/logged/${id}`;
     try {
@@ -105,7 +102,7 @@ function App() {
       console.log(e);
     }
   };
-
+  // Login function, saving token in Local Storage
   const login = (token) => {
     let decodedToken = jose.decodeJwt(token);
     loggedInfo(decodedToken._id);
@@ -182,7 +179,14 @@ function App() {
           <Route path="/provider/:id" element={<ProviderPage />} />
           <Route
             path="/checkout"
-            element={<Stripe cart={cart} onAdd={onAdd} onRemove={onRemove} />}
+            element={
+              <Stripe
+                cart={cart}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                setCart={setCart}
+              />
+            }
           />
           <Route
             path="/payment/success"

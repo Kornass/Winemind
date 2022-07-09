@@ -304,6 +304,14 @@ button {
 .active input {
   width: 20px;
 }
+.products-container-admin {
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* overflow-x: scroll; */
+}
+.products-container-admin > div {
+  width: 25%;
+}
 /* ================================================================================= */
 /* Popup cart */
 .cartPopup {

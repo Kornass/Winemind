@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Checkout(props) {
+  console.log(props);
   const stripe = useStripe();
   const navigate = useNavigate();
   useEffect(() => {
@@ -47,6 +48,13 @@ function Checkout(props) {
     props.cart.forEach((ele) => (total += ele.qty * ele.price));
     return total;
   };
+
+  const removeItem = (item) => {
+    let cartCopy = [...props.cart];
+    cartCopy.splice(item, 1);
+    props.setCart(cartCopy);
+  };
+
   return (
     <div className="container">
       <h3>Checkout</h3>
@@ -76,7 +84,9 @@ function Checkout(props) {
                 {e.price * e.qty}
               </p>
 
-              <button className="checkout-remove">X</button>
+              <button className="checkout-remove" onClick={() => removeItem(i)}>
+                X
+              </button>
             </div>
           </div>
         );

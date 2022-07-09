@@ -30,7 +30,7 @@ function UserProducts({ user }) {
   };
 
   return (
-    <div className="products-container">
+    <div className="products-container-admin">
       {products &&
         products.map((item) => (
           <div className="product" key={item._id}>
