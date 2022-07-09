@@ -72,7 +72,7 @@ function EditUser({ item }) {
 
   return (
     <>
-      <button className="edit" onClick={toggleModal}>
+      <button className="editbtn" onClick={toggleModal}>
         <FaEdit color="orange" />
       </button>
       <Modal

@@ -15,7 +15,7 @@ function Cart({ cart, onAdd, onRemove, setCart, showCart }) {
   return (
     <>
       <div className="cart-top">
-        <h3>CART</h3>
+        <h4>CART</h4>
         <button onClick={() => showCart()}>X</button>
       </div>
       {cart.length === 0 && <div className="empty">Cart is empty</div>}

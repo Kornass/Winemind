@@ -37,9 +37,12 @@ function Search({ allProd, onAdd }) {
                 handleSearch();
               }}
             >
-              <p className="search-result">{ele.name}</p>
+              <div className="search-result">
+                <p>{ele.name}</p>
+
+                <span>{ele.price}€</span>
+              </div>
             </Link>
-            <span>{ele.price}€</span>
           </div>
         );
       });

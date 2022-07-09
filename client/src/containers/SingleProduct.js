@@ -46,8 +46,10 @@ function SingleProduct({ allProd, onAdd }) {
           <span className="bold">Region: </span> {product.region}
         </p>
         <p>{product.description}</p>
-        <h1>{product.price}€</h1>
-        <button onClick={() => onAdd(product)}>Add to cart</button>
+        <h2>{product.price}€</h2>
+        <button onClick={() => onAdd(product)} className="add-to-cart">
+          Add to cart
+        </button>
       </div>
     </div>
   );

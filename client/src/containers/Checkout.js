@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Checkout(props) {
-  console.log(props);
   const stripe = useStripe();
   const navigate = useNavigate();
   useEffect(() => {
@@ -91,7 +90,9 @@ function Checkout(props) {
           </div>
         );
       })}
-      <p style={{ fontWeight: "bold" }}>Total: {calculate_total()} €</p>
+      <h2 style={{ textAlign: "center", paddingTop: "20px" }}>
+        Total: {calculate_total()} €
+      </h2>
       <div className="payment">
         <button onClick={() => createCheckoutSession()}>Go to payment </button>
       </div>

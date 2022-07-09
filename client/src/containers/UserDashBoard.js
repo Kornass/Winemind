@@ -8,7 +8,7 @@ function UserDashBoard({ user, setUser }) {
       <ProviderDetails user={user} setUser={setUser} />
       <AddProduct user={user} />
 
-      <h2>Your products</h2>
+      <h3>Your products</h3>
       <UserProducts user={user} />
     </div>
   );

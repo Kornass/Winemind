@@ -15,7 +15,6 @@ function ProviderDetails({ user, setUser }) {
     setEditing(!editing);
   };
   const updateUser = (e) => {
-    debugger;
     e.preventDefault();
     let url = `${URL}/user/${user._id}/update`;
     axios
@@ -39,16 +38,38 @@ function ProviderDetails({ user, setUser }) {
         alert(e);
       });
   };
-  console.log(user.image);
+
+  const closeEdit = () => {
+    setUpdated({
+      name: user.name,
+      eMail: user.eMail,
+      companyName: user.companyName,
+    });
+    setEditing(!editing);
+  };
   return (
     <>
-      <h2 className="to-edit">User information</h2>
-      <button className="edit" onClick={updateInfo}>
+      <h3>User information</h3>
+      <div className="edit">
+        {/* <button className="editbtn" onClick={updateInfo}>
         <FaEdit />
-      </button>
-      <div>
+      </button> */}
+
+        {user.image ? (
+          <img src={user.image} alt="provider image" />
+        ) : (
+          <img
+            src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+            alt="default picture"
+          />
+        )}
+
         {editing ? (
-          <form onSubmit={updateUser}>
+          <form onSubmit={updateUser} className="edit-form">
+            <div className="close-details">
+              <label>Name:</label>
+              <button onClick={closeEdit}>X</button>
+            </div>
             <input
               value={updated.name}
               onChange={(e) =>
@@ -58,12 +79,14 @@ function ProviderDetails({ user, setUser }) {
                 })
               }
             />
+            <label>E-mail:</label>
             <input
               value={updated.eMail}
               onChange={(e) =>
                 setUpdated({ ...updated, eMail: e.target.value })
               }
             />
+            <label>Company name:</label>
             <input
               value={updated.companyName}
               onChange={(e) =>
@@ -73,28 +96,19 @@ function ProviderDetails({ user, setUser }) {
                 })
               }
             />
-            <input type="Submit" defaultValue="Submit" />
+            <input type="Submit" defaultValue="Submit" className="submit" />
           </form>
         ) : (
-          <div className="providerInfo">
-            <div>
-              {user.image ? (
-                <img src={user.image} alt="provider image" />
-              ) : (
-                <img
-                  src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                  alt="default picture"
-                />
-              )}
-            </div>
-            <div className="userInfo">
-              <p className="bold">Name:</p>
-              <p> {user.name}</p>
-              <p className="bold">E-mail:</p>
-              <p> {user.eMail}</p>
-              <p className="bold">Company name:</p>
-              <p> {user.companyName}</p>
-            </div>
+          <div className="userInfo">
+            <span className="bold">Name:</span>{" "}
+            <button className="editbtn" onClick={updateInfo}>
+              <FaEdit />
+            </button>
+            <p> {user.name}</p>
+            <p className="bold">E-mail:</p>
+            <p> {user.eMail}</p>
+            <p className="bold">Company name:</p>
+            <p> {user.companyName}</p>
           </div>
         )}
       </div>

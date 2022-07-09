@@ -87,7 +87,7 @@ function AddProduct({ user }) {
 
   return (
     <>
-      <h2>Add product</h2>
+      <h3>Add product</h3>
       <div className="addform">
         <form onSubmit={add}>
           <label>Wine name *</label>
@@ -165,7 +165,6 @@ function AddProduct({ user }) {
           />
           <label>Description</label>
           <textarea
-            className="textarea"
             onChange={(e) =>
               setProduct({ ...product, description: e.target.value })
             }

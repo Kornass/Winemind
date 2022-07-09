@@ -41,7 +41,7 @@ function AllProviders() {
   }, [allProviders]);
   return (
     <>
-      <h2>All providers</h2>
+      <h3>All providers</h3>
       <table className="providers">
         <tbody>
           <tr>
