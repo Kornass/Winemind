@@ -176,7 +176,7 @@ function AddProduct({ user }) {
             required
             onChange={(e) => setProduct({ ...product, img: e.target.value })}
           />
-          <input type="submit" value="Add" />
+          <input type="submit" value="Add" className="add-to-cart" />
         </form>
       </div>
     </>

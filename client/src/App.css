@@ -259,6 +259,7 @@ button {
   color: white;
   margin-top: 10px;
   transition: 0.6s;
+  cursor: pointer;
 }
 .add-to-cart:hover {
   background: transparent;
