@@ -3,6 +3,7 @@ import { URL } from "../config";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaInfo, FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 
 function Checkout(props) {
   const stripe = useStripe();
@@ -71,19 +72,29 @@ function Checkout(props) {
                 {e.type}
               </p>
 
-              <button onClick={() => props.onAdd(e)}>+</button>
-              <button onClick={() => props.onRemove(e)}>-</button>
+              <button className="button-empty" onClick={() => props.onAdd(e)}>
+                <FaPlusCircle />
+              </button>
+              <button
+                className="button-empty"
+                onClick={() => props.onRemove(e)}
+              >
+                <FaMinusCircle />
+              </button>
 
               <p>
                 <span className="bold">Price: </span>
-                {e.price}
+                {e.price}€
               </p>
               <p>
                 <span className="bold total">Total: </span>
-                {e.price * e.qty}
+                {e.price * e.qty}€
               </p>
 
-              <button className="checkout-remove" onClick={() => removeItem(i)}>
+              <button
+                className="button-empty-delete"
+                onClick={() => removeItem(i)}
+              >
                 X
               </button>
             </div>

@@ -7,7 +7,7 @@ function AdminDashBoard({ user }) {
   return (
     <div className="container">
       <AllProviders />
-      <AddProduct user={user} />
+      {/* <AddProduct user={user} /> */}
     </div>
   );
 }

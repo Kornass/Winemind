@@ -360,17 +360,30 @@ button {
   align-items: center;
   padding: 5px 0;
   border-bottom: 0.5px solid rgb(131, 131, 131);
-  background-color: rgb(174, 171, 171);
+  background-color: rgb(133, 133, 133);
   color: white;
 }
 .cart-top h3 {
-  margin-left: 2px;
+  margin-left: 1%;
+}
+.cart-top h4 {
+  margin-left: 1%;
 }
 .cart-top button {
-  margin-right: 2px;
+  margin-right: 1%;
 }
 .cart-top button,
 .cart-item button:nth-child(3) {
+  border: none;
+  background-color: transparent;
+}
+.button-empty {
+  border: none;
+  background-color: transparent;
+}
+.button-empty-delete {
+  color: red;
+  font-size: x-large;
   border: none;
   background-color: transparent;
 }
