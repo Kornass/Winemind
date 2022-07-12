@@ -54,11 +54,11 @@ form input:focus {
   font-weight: bold;
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.75);
+  top: 0;
 }
 .left-nav {
   width: 40%;
   display: flex;
-  /* justify-content: flex-start; */
   align-items: center;
 }
 
@@ -75,11 +75,9 @@ form input:focus {
   cursor: pointer;
   width: 120px;
   height: 40px;
-  /* padding: 8px; */
   margin: 0 5px;
 }
 .nav-btns {
-  /* display: flex; */
   padding-left: 20px;
   text-align: center;
 }
@@ -468,13 +466,13 @@ button {
 /* Filtering */
 .filter-container {
   position: sticky;
-  top: 105.5px;
+  top: 90px;
   margin: auto;
   width: 100%;
   border: 1px solid rgb(139, 136, 136);
   border-radius: 8px;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.8);
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -486,7 +484,7 @@ button {
 .clear {
   border: 0.5px solid rgb(139, 136, 136);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(194, 194, 194, 0.75);
   padding: 2px;
   color: black;
 }
@@ -539,7 +537,7 @@ button {
 /* ================================================================================= */
 /* checkout */
 .checkout-item img {
-  width: 8%;
+  width: 120px;
   padding-left: 20px;
 }
 .checkout-item div {
@@ -588,7 +586,7 @@ button {
 /* Puts body below the navbar */
 .container {
   position: relative;
-  top: 150px;
+  top: 120px;
   margin-bottom: 200px;
 }
 /* ==================================================  */
@@ -676,4 +674,108 @@ h3 {
   margin-top: 20px;
   box-shadow: rgba(159, 155, 22, 0.22) 0px 6px 12px,
     rgba(159, 155, 22, 0.22) 0px 6px 4.5px;
+}
+@media all and (max-width: 850px) {
+  .filter-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .singleProdDiv {
+    padding-top: 100px;
+    padding-bottom: 0;
+  }
+  .filter-container > div {
+    width: 100%;
+  }
+  .clear {
+    width: 100%;
+    grid-column: span 3;
+    margin-left: 5px;
+  }
+}
+@media all and (max-width: 721px) {
+  .nav-button {
+    width: 100px;
+    height: 33px;
+  }
+  .nav-btns {
+    padding-left: 10px;
+  }
+  .searchbar {
+    width: 135px;
+  }
+  .create span {
+    display: none;
+  }
+  .create::before {
+    content: "SignUp";
+  }
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cartPopup {
+    width: 250px;
+  }
+  .checkout-item img {
+    width: 100px;
+  }
+}
+@media all and (max-width: 592px) {
+  .nav-btns p {
+    display: none;
+  }
+  .nav-button {
+    margin-top: 10px;
+  }
+  .nav-btns {
+    padding: 0;
+  }
+  .searchbar {
+    width: 115px;
+  }
+  .imagediv img {
+    height: 50%;
+  }
+  .descriptionDiv p {
+    margin-top: 1%;
+    margin-bottom: 10px;
+  }
+}
+@media all and (max-width: 510px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cartPopup {
+    width: 200px;
+  }
+}
+@media all and (max-width: 440px) {
+  .nav-button {
+    width: 75px;
+    height: 25px;
+  }
+  .nav-btns {
+    width: 40%;
+  }
+  .searchbar {
+    width: 100px;
+  }
+  .filter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .clear {
+    width: 100%;
+    grid-column: span 2;
+  }
+  .checkout-item img {
+    width: 90px;
+  }
+}
+@media all and (max-width: 370px) {
+  .searchbar {
+    width: 85px;
+  }
 }

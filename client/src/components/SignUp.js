@@ -73,7 +73,7 @@ function SignUp({ setOpenLogin }) {
   return (
     <>
       <button className="nav-button create" onClick={toggleModal}>
-        Create account
+        <span>Create account</span>
       </button>
       <Modal
         isOpen={isOpen}
