@@ -214,10 +214,9 @@ button {
 }
 .product img {
   width: 80px;
-
-  height: fit-content;
-  min-height: 228.5px;
-  /* max-height: 250px; */
+  /* height: fit-content;
+  min-height: 228.5px; */
+  max-height: 250px;
 }
 /* .product-link {
   width: 150px;
